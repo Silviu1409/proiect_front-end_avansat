@@ -2,7 +2,7 @@ import { Typography } from '@mui/material';
 import React, { useEffect } from 'react';
 import {test} from './controllers/test';
 
-import './Home.css';
+import './Home.scss';
 
 
 function Home() {

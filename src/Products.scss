@@ -1,0 +1,66 @@
+.shoppingcart{
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    padding-right: 2vw;
+    padding-bottom: 4vh;
+}
+
+.products {
+    text-align: center;
+    background-color: #299745;
+}
+
+.products-header {
+    font-family: "Varela Round", sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10vh;
+    font-size: calc(10px + 2vmin);
+    color: white;
+}
+
+.categories{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0vh 3vw 5vh 3vw;
+}
+
+.categories > *{
+    text-decoration: none;
+    color: black;
+}
+
+.categories > * > *{
+    margin: 5px;
+    height: 30vh;
+    width: 20vw;
+    background-color: blue;
+    margin: 3vh 0 3vh 2.5vw;
+    text-align: center;
+}
+
+.categories > * > * > *{
+    margin: auto;
+}
+
+.procesoare{
+    background-image: url("https://st2.depositphotos.com/1000128/7250/i/950/depositphotos_72503579-stock-photo-modern-cpu.jpg");
+    background-size: 100% 100%;
+}
+
+.placi_video{
+    background-image: url("https://i.ytimg.com/vi/ZxGtMHXWpMw/maxresdefault.jpg");
+    background-size: 100% 100%;
+}
+
+.surse{
+    background-image: url("https://media.istockphoto.com/id/119939193/photo/power-supply-box.jpg?s=612x612&w=0&k=20&c=m5XVUvaALuJlmgPhxddtKR7YH01bf5MxIqbVxcxSacQ=");
+    background-size: 100% 100%;
+}
+
+.memorii_ram{
+    background-image: url("https://cdn.mos.cms.futurecdn.net/TGdfym6rGun8dsEHYonV3.jpg");
+    background-size: 100% 100%;
+}

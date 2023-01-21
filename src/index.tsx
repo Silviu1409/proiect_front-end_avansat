@@ -10,7 +10,7 @@ import Profile from './Profile';
 
 import { BrowserRouter as Router, Navigate, Route, Routes } from "react-router-dom";
 
-import './index.css';
+import './index.scss';
 import ShoppingCart from './ShoppingCart';
 
 
@@ -42,6 +42,18 @@ root.render(
 
       {/* Ruta pentru pagina de Contact */}
       <Route path="/contact" element={<Contact />} />
+
+      {/* Ruta pentru pagina de CPU */}
+      <Route path="/cpu" element={<Products />} />
+
+      {/* Ruta pentru pagina de GPU */}
+      <Route path="/gpu" element={<Products />} />
+
+      {/* Ruta pentru pagina de PSU */}
+      <Route path="/psu" element={<Products />} />
+
+      {/* Ruta pentru pagina de RAM */}
+      <Route path="/ram" element={<Products />} />
 
       {/* Ruta default */}
       <Route path="*" element={<Navigate to="/" />} />
