@@ -55,6 +55,12 @@ root.render(
       {/* Ruta pentru pagina de RAM */}
       <Route path="/ram" element={<Products />} />
 
+      {/* Ruta pentru pagina de placi de baza */}
+      <Route path="/placi_baza" element={<Products />} />
+
+      {/* Ruta pentru pagina de SSD */}
+      <Route path="/ssd" element={<Products />} />
+
       {/* Ruta default */}
       <Route path="*" element={<Navigate to="/" />} />
       

@@ -1,7 +1,7 @@
 .Home {
   text-align: center;
   background-color: #299745;
-  height: 100vh;
+  height: auto;
 }
 
 .Home-header {
@@ -11,7 +11,16 @@
   flex-direction: column;
   align-items: center;
   /* justify-content: center; */
-  padding: 10vh;
+  padding-top: 10vh;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+.content{
+  text-align: left;
+  padding-left: 7.5vw;
+  padding-top: 10vh;
+  padding-bottom: 5vh;
+  color: white;
+  font-family: "Varela Round", sans-serif;
 }

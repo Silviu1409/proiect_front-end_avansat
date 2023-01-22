@@ -27,21 +27,20 @@
     padding: 0vh 3vw 5vh 3vw;
 }
 
-.categories > *{
+.categories > * {
     text-decoration: none;
-    color: black;
+    color: white;
 }
 
-.categories > * > *{
+.categories > * > * > * {
     margin: 5px;
     height: 30vh;
     width: 20vw;
-    background-color: blue;
     margin: 3vh 0 3vh 2.5vw;
     text-align: center;
 }
 
-.categories > * > * > *{
+.categories > * > * > * > *{
     margin: auto;
 }
 
@@ -51,7 +50,7 @@
 }
 
 .placi_video{
-    background-image: url("https://i.ytimg.com/vi/ZxGtMHXWpMw/maxresdefault.jpg");
+    background-image: url("https://cdn.staticneo.com/n/9/evgagtx1080tireview_thumb800_display.jpg");
     background-size: 100% 100%;
 }
 
@@ -63,4 +62,14 @@
 .memorii_ram{
     background-image: url("https://cdn.mos.cms.futurecdn.net/TGdfym6rGun8dsEHYonV3.jpg");
     background-size: 100% 100%;
+}
+
+.placi_baza{
+    background-image: url("https://cdn.pixabay.com/photo/2014/12/11/22/10/board-564815__480.jpg");
+    background-size: 100% 100%;
+}
+
+.ssd{
+    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUxKWPGleUuzpWdFRB1YjaQWIyvInX73e-9Q&usqp=CAU");
+    background-size: 100% 100%;   
 }

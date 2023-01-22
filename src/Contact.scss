@@ -1,0 +1,39 @@
+.Contact {
+    text-align: center;
+    background-color: #299745;
+    height:auto;
+}
+
+.Contact-header {
+    font-family: "Varela Round", sans-serif;
+    align-items: center;
+    padding-top: 5vh;
+    color: white;
+}
+
+.program_lucru, .detalii{
+    text-align: left;
+    padding-left: 5vw;
+    padding-top: 5vh;
+    color: white;
+    font-family: "Varela Round", sans-serif;
+}
+
+.content{
+    display: flex;
+    flex-direction: row;
+    padding-top: 7.5vh;
+    padding-bottom: 5vh;
+}
+
+.text{
+    width: 45%;
+    padding-right: 5vw;
+}
+
+.harta{
+    margin-top: 4.5vh;
+    width: 45vw;
+    height: 50vh;
+    border: 0;
+}
