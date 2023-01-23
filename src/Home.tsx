@@ -17,17 +17,19 @@ function Home() {
           Despre noi
         </Typography>
       </header>
-      <body>
+
+      <div>
         <div className='content'>
           <div>
             <Typography variant="h5" component="h5">
-              Avem la dispozitie Componente PC din 6 categorii:<br/>
+              Avem la dispozitie Componente PC din 7 categorii:<br/>
               &emsp; - procesoare<br/>
               &emsp; - placi video<br/>
               &emsp; - surse<br/>
               &emsp; - memorii RAM<br/>
               &emsp; - placi de baza<br/>
-              &emsp; - SSD-uri<br/><br/>
+              &emsp; - SSD-uri<br/>
+              &emsp; - carcase<br/><br/>
               Acestea pot sa fie:<br/>
               &emsp; - filtrate in functie de specificatii
               &emsp; - sortate in functie de pret<br/><br/>
@@ -37,7 +39,7 @@ function Home() {
             </Typography> 
           </div>
         </div>
-      </body>
+      </div>
     </div>
   );
 }

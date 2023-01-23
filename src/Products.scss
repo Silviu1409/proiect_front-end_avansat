@@ -16,7 +16,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 10vh;
+    padding-top: 7.5vh;
+    padding-bottom: 7.5vh;
     font-size: calc(10px + 2vmin);
     color: white;
 }
@@ -36,7 +37,7 @@
     margin: 5px;
     height: 30vh;
     width: 20vw;
-    margin: 3vh 0 3vh 2.5vw;
+    margin: 2.5vh 0 7.5vh 2.5vw;
     text-align: center;
 }
 
@@ -71,5 +72,10 @@
 
 .ssd{
     background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUxKWPGleUuzpWdFRB1YjaQWIyvInX73e-9Q&usqp=CAU");
+    background-size: 100% 100%;   
+}
+
+.carcase{
+    background-image: url("https://i.pcmag.com/imagery/roundups/05hdyk7k8eQlymJjfyeSfwC-48..v1616796995.jpg");
     background-size: 100% 100%;   
 }

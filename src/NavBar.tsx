@@ -23,11 +23,11 @@ function NavBar() {
                 </NavLink>
               </li>
 
-              <li className="nav-item">
+              {/* <li className="nav-item">
                 <NavLink className="nav-link" to="/login">
                   Login
                 </NavLink>
-              </li>
+              </li> */}
 
               <li className="nav-item">
                 <NavLink className="nav-link" to="/products">
@@ -35,11 +35,11 @@ function NavBar() {
                 </NavLink>
               </li>
 
-              <li className="nav-item">
+              {/* <li className="nav-item">
                 <NavLink className="nav-link" to="/profile">
                   Profile
                 </NavLink>
-              </li>
+              </li> */}
 
               <li className="nav-item">
                 <NavLink className="nav-link" to="/shoppingcart">
