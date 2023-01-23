@@ -4,16 +4,16 @@ import {getFirestore, collection, getDocs, DocumentData} from "firebase/firestor
 
 const db = getFirestore(app);
 
-const testCollection = collection(db, "ram");
+const testCollection = collection(db, "ssd");
 
 
-export async function getRAMs(){
-    var rams: DocumentData[] = [];
+export async function getSSDs(){
+    var ssds: DocumentData[] = [];
 
     const snapshot = await getDocs(testCollection);
     snapshot.forEach((doc) => {
-        rams.push(doc.data());
+        ssds.push(doc.data());
     });
 
-    return rams;
+    return ssds;
 }
