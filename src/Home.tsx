@@ -31,7 +31,7 @@ function Home() {
               &emsp; - SSD-uri<br/>
               &emsp; - carcase<br/><br/>
               Acestea pot sa fie:<br/>
-              &emsp; - filtrate in functie de specificatii
+              &emsp; - filtrate in functie de specificatii<br/>
               &emsp; - sortate in functie de pret<br/><br/>
               Produsele sunt de calitate si la preturi mici.<br/><br/>
               Forit.ro - un magazin online actual, practic, complet.<br/>
