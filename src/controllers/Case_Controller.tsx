@@ -30,7 +30,7 @@ export async function getCases(){
     return carcase;
 }
 
-export async function getCases_vent_incl(placa_compat: string){
+export async function getCases_placa_compat(placa_compat: string){
     var carcase: ICase[] = [];
 
     const q = query(caseCollection, where(`placi_compat.${placa_compat}`, "==", true));

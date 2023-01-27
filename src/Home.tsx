@@ -1,15 +1,9 @@
 import { Typography } from '@mui/material';
-import React, { useEffect } from 'react';
-import {test} from './controllers/test';
-
+import React from 'react';
 import './Home.scss';
 
 
 function Home() {
-  // useEffect(() => {
-  //     test();
-  // });
-
   return (
     <div className="Home">
       <header className="Home-header">

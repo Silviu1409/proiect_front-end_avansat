@@ -1,18 +1,13 @@
-import { ICase } from "../interfaces/ICase";
+import { IRAM } from "../interfaces/IRAM";
 import { Typography, Button } from '@mui/material';
 
-import "./CaseStil.scss";
+import "./RAMStil.scss";
 
 
-var ATX: Map<boolean, string> = new Map([[true, "ATX"], [false, ""]]);
-var mATX: Map<boolean, string> = new Map([[true, "mATX"], [false, ""]]);
-var mITX: Map<boolean, string> = new Map([[true, "mITX"], [false, ""]]);
-
-
-const CaseItem = (item: ICase)  => {
+const RAMItem = (item: IRAM)  => {
     return (
         <div key={item.id} className="item">
-            <img src={item.url_poza} alt="case img"/>
+            <img src={item.url_poza} alt="ram img"/>
 
             <Typography variant="h5" component="h5">
                 {item.denumire}
@@ -20,16 +15,17 @@ const CaseItem = (item: ICase)  => {
 
             <div>
                 <Typography variant="h6" component="h6">
-                    Dimensiuni: {item.dimensiuni}
+                    Capacitate: {item.capacitate}
                 </Typography>
 
                 <Typography variant="h6" component="h6">
-                    Placi compatibile: { ATX.get(item.placi_compat.ATX) } { mATX.get(item.placi_compat.mATX) } { mITX.get(item.placi_compat.mITX) }
+                    Frecventa: {item.frecventa}
                 </Typography>
 
                 <Typography variant="h6" component="h6">
-                    Ventilatoare incluse: {item.ventilatoare_incl}
+                    Tip: {item.tip}
                 </Typography>
+
             </div>
 
             <div>
@@ -43,4 +39,4 @@ const CaseItem = (item: ICase)  => {
     )
 }
 
-export default CaseItem
+export default RAMItem

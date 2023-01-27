@@ -8,7 +8,7 @@ import GPUItem from './GPUItem';
 import "./GPUStil.scss";
 
 
-function Case() {
+function GPU() {
     const [GPUs, setGPUs] = useState(Array<IGPU>);
     const [sort, setSort] = useState("");
     const [filtrareChipset, setFiltrareChipset] = useState("");
@@ -167,4 +167,4 @@ function Case() {
     )
 }
 
-export default Case;
+export default GPU;

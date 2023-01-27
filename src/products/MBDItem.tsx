@@ -1,18 +1,13 @@
-import { ICase } from "../interfaces/ICase";
+import { IMBD } from "../interfaces/IMBD";
 import { Typography, Button } from '@mui/material';
 
-import "./CaseStil.scss";
+import "./MBDStil.scss";
 
 
-var ATX: Map<boolean, string> = new Map([[true, "ATX"], [false, ""]]);
-var mATX: Map<boolean, string> = new Map([[true, "mATX"], [false, ""]]);
-var mITX: Map<boolean, string> = new Map([[true, "mITX"], [false, ""]]);
-
-
-const CaseItem = (item: ICase)  => {
+const MBDItem = (item: IMBD)  => {
     return (
         <div key={item.id} className="item">
-            <img src={item.url_poza} alt="case img"/>
+            <img src={item.url_poza} alt="mbd img"/>
 
             <Typography variant="h5" component="h5">
                 {item.denumire}
@@ -20,16 +15,25 @@ const CaseItem = (item: ICase)  => {
 
             <div>
                 <Typography variant="h6" component="h6">
-                    Dimensiuni: {item.dimensiuni}
+                    Soclu: {item.socket}
                 </Typography>
 
                 <Typography variant="h6" component="h6">
-                    Placi compatibile: { ATX.get(item.placi_compat.ATX) } { mATX.get(item.placi_compat.mATX) } { mITX.get(item.placi_compat.mITX) }
+                    Tip memorie: {item.tip_memorie}
                 </Typography>
 
                 <Typography variant="h6" component="h6">
-                    Ventilatoare incluse: {item.ventilatoare_incl}
+                    Sloturi memorie: {item.slots_memorie}
                 </Typography>
+
+                <Typography variant="h6" component="h6">
+                    Capacitate maxima memorie: {item.max_memorie}
+                </Typography>
+
+                <Typography variant="h6" component="h6">
+                    M.2: {item.M_2}
+                </Typography>
+
             </div>
 
             <div>
@@ -43,4 +47,4 @@ const CaseItem = (item: ICase)  => {
     )
 }
 
-export default CaseItem
+export default MBDItem

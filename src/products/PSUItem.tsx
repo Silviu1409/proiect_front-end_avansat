@@ -1,18 +1,13 @@
-import { ICase } from "../interfaces/ICase";
+import { IPSU } from "../interfaces/IPSU";
 import { Typography, Button } from '@mui/material';
 
-import "./CaseStil.scss";
+import "./PSUStil.scss";
 
 
-var ATX: Map<boolean, string> = new Map([[true, "ATX"], [false, ""]]);
-var mATX: Map<boolean, string> = new Map([[true, "mATX"], [false, ""]]);
-var mITX: Map<boolean, string> = new Map([[true, "mITX"], [false, ""]]);
-
-
-const CaseItem = (item: ICase)  => {
+const PSUItem = (item: IPSU)  => {
     return (
         <div key={item.id} className="item">
-            <img src={item.url_poza} alt="case img"/>
+            <img src={item.url_poza} alt="psu img"/>
 
             <Typography variant="h5" component="h5">
                 {item.denumire}
@@ -20,15 +15,19 @@ const CaseItem = (item: ICase)  => {
 
             <div>
                 <Typography variant="h6" component="h6">
-                    Dimensiuni: {item.dimensiuni}
+                    Certificare: {item.certificare}
                 </Typography>
 
                 <Typography variant="h6" component="h6">
-                    Placi compatibile: { ATX.get(item.placi_compat.ATX) } { mATX.get(item.placi_compat.mATX) } { mITX.get(item.placi_compat.mITX) }
+                    Eficienta: {item.eficienta}
                 </Typography>
 
                 <Typography variant="h6" component="h6">
-                    Ventilatoare incluse: {item.ventilatoare_incl}
+                    Modulara: {item.modulara}
+                </Typography>
+
+                <Typography variant="h6" component="h6">
+                    Putere: {item.putere}
                 </Typography>
             </div>
 
@@ -43,4 +42,4 @@ const CaseItem = (item: ICase)  => {
     )
 }
 
-export default CaseItem
+export default PSUItem

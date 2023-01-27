@@ -2,7 +2,7 @@ import { Typography, FormControl, Select, MenuItem, SelectChangeEvent, FormLabel
 import React, { useEffect, useState } from 'react';
 // import { useAppSelector, useAppDispatch } from '../app/hooks';
 // import { getAll } from '../app/features/case/caseReducer';
-import { getCases, getCases_vent_incl } from '../controllers/Case_Controller';
+import { getCases, getCases_placa_compat } from '../controllers/Case_Controller';
 import { ICase } from '../interfaces/ICase';
 import CaseItem from './CaseItem';
 
@@ -43,7 +43,7 @@ function Case() {
     const handleFiltering = (event: SelectChangeEvent) => {
         setFiltrare(event.target.value);
 
-        getCases_vent_incl(event.target.value)
+        getCases_placa_compat(event.target.value)
         .then((data) => {
             setCarcase(data);
         });

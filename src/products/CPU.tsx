@@ -8,7 +8,7 @@ import CPUItem from './CPUItem';
 import "./CPUStil.scss";
 
 
-function Case() {
+function CPU() {
     const [CPUs, setCPUs] = useState(Array<ICPU>);
     const [sort, setSort] = useState("");
     const [filtrareProd, setFiltrareProd] = useState("");
@@ -203,4 +203,4 @@ function Case() {
     )
 }
 
-export default Case;
+export default CPU;
