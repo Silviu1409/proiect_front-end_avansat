@@ -1,11 +1,14 @@
-import { Typography, FormControl, Select, MenuItem, SelectChangeEvent, FormLabel, RadioGroup, FormControlLabel, Radio, Button } from '@mui/material';
+import { Typography, FormControl, Select, MenuItem, SelectChangeEvent, FormLabel, RadioGroup, FormControlLabel, Radio, Button, Fab } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { getSSDs, getSSDs_filter } from '../controllers/SSD_Controller';
 import { ISSD } from '../interfaces/ISSD';
 import SSDItem from './SSDItem';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 
+import "./Stil.scss";
 import "./SSDStil.scss";
+import { NavLink } from 'react-router-dom';
 
 
 function SSD() {
@@ -137,6 +140,12 @@ function SSD() {
                     </div>
                 </div>
             </div>
+
+            <NavLink className="shoppingcart" to="/shoppingcart">
+                <Fab color="secondary" aria-label="add">
+                    <ShoppingCartIcon />
+                </Fab>
+            </NavLink>
         </div>
     )
 }

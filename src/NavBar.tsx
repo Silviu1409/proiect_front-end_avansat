@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { NavLink } from "react-router-dom";
 
 import './NavBar.scss';
@@ -8,7 +8,7 @@ function NavBar() {
   return (
     <div className="navigation ">
       <center className="sigla">
-        <img src="https://www.forit.ro/views/forit/images/layout/logo.png"/>
+        <img src="https://www.forit.ro/views/forit/images/layout/logo.png" alt="logo site"/>
       </center>
 
       <nav className="navbar navbar-expand  ">

@@ -1,11 +1,14 @@
-import { Typography, FormControl, Select, MenuItem, SelectChangeEvent, FormLabel, RadioGroup, FormControlLabel, Radio, Button } from '@mui/material';
+import { Typography, FormControl, Select, MenuItem, SelectChangeEvent, FormLabel, RadioGroup, FormControlLabel, Radio, Button, Fab } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { getGPUs, getGPUs_filter } from '../controllers/GPU_Controller';
 import { IGPU } from '../interfaces/IGPU';
 import GPUItem from './GPUItem';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 
+import "./Stil.scss";
 import "./GPUStil.scss";
+import { NavLink } from 'react-router-dom';
 
 
 function GPU() {
@@ -163,6 +166,12 @@ function GPU() {
                     </div>
                 </div>
             </div>
+
+            <NavLink className="shoppingcart" to="/shoppingcart">
+                <Fab color="secondary" aria-label="add">
+                    <ShoppingCartIcon />
+                </Fab>
+            </NavLink>
         </div>
     )
 }

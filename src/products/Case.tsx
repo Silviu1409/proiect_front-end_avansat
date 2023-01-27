@@ -1,13 +1,16 @@
-import { Typography, FormControl, Select, MenuItem, SelectChangeEvent, FormLabel, RadioGroup, FormControlLabel, Radio, Button } from '@mui/material';
+import { Typography, FormControl, Select, MenuItem, SelectChangeEvent, FormLabel, RadioGroup, FormControlLabel, Radio, Button, Fab } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 // import { useAppSelector, useAppDispatch } from '../app/hooks';
 // import { getAll } from '../app/features/case/caseReducer';
 import { getCases, getCases_placa_compat } from '../controllers/Case_Controller';
 import { ICase } from '../interfaces/ICase';
 import CaseItem from './CaseItem';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 
+import "./Stil.scss";
 import "./CaseStil.scss";
+import { NavLink } from 'react-router-dom';
 
 
 function Case() {
@@ -143,6 +146,12 @@ function Case() {
                     </div>
                 </div>
             </div>
+
+            <NavLink className="shoppingcart" to="/shoppingcart">
+                <Fab color="secondary" aria-label="add">
+                    <ShoppingCartIcon />
+                </Fab>
+            </NavLink>
         </div>
     )
 }

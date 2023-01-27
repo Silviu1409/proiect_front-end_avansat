@@ -1,11 +1,14 @@
-import { Typography, FormControl, Select, MenuItem, SelectChangeEvent, FormLabel, RadioGroup, FormControlLabel, Radio, Button } from '@mui/material';
+import { Typography, FormControl, Select, MenuItem, SelectChangeEvent, FormLabel, RadioGroup, FormControlLabel, Radio, Button, Fab } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { getCPUs, getCPUs_filter } from '../controllers/CPU_Controller';
 import { ICPU } from '../interfaces/ICPU';
 import CPUItem from './CPUItem';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 
+import "./Stil.scss";
 import "./CPUStil.scss";
+import { NavLink } from 'react-router-dom';
 
 
 function CPU() {
@@ -145,7 +148,7 @@ function CPU() {
                     </FormControl>
 
                     <FormControl>
-                        <FormLabel id="demo-radio-buttons-group-label" sx={{color: "white"}}>Socket :</FormLabel>
+                        <FormLabel id="demo-radio-buttons-group-label" sx={{color: "white"}}>Soclu :</FormLabel>
 
                         <RadioGroup
                             aria-labelledby="demo-radio-buttons-group-label"
@@ -199,6 +202,12 @@ function CPU() {
                     </div>
                 </div>
             </div>
+
+            <NavLink className="shoppingcart" to="/shoppingcart">
+                <Fab color="secondary" aria-label="add">
+                    <ShoppingCartIcon />
+                </Fab>
+            </NavLink>
         </div>
     )
 }

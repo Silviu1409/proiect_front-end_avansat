@@ -1,11 +1,14 @@
-import { Typography, FormControl, Select, MenuItem, SelectChangeEvent, FormLabel, RadioGroup, FormControlLabel, Radio, Button } from '@mui/material';
+import { Typography, FormControl, Select, MenuItem, SelectChangeEvent, FormLabel, RadioGroup, FormControlLabel, Radio, Button, Fab } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { getMBDs, getMBDs_filter } from '../controllers/MBD_Controller';
 import { IMBD } from '../interfaces/IMBD';
 import MBDItem from './MBDItem';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 
+import "./Stil.scss";
 import "./MBDStil.scss";
+import { NavLink } from 'react-router-dom';
 
 
 function MBD() {
@@ -189,6 +192,12 @@ function MBD() {
                     </div>
                 </div>
             </div>
+
+            <NavLink className="shoppingcart" to="/shoppingcart">
+                <Fab color="secondary" aria-label="add">
+                    <ShoppingCartIcon />
+                </Fab>
+            </NavLink>
         </div>
     )
 }
