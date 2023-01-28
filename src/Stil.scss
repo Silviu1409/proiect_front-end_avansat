@@ -1,0 +1,135 @@
+.login {
+    width: 25%;
+    padding: 2%;
+    overflow: hidden;
+    background-color:#272643;
+    border-radius: 10px;
+    box-shadow: 5px 20px 50px #000;
+}
+
+.reset {
+    padding: 1%;
+    overflow: hidden;
+    background-color:#7e8207;
+    border-radius: 10px;
+    box-shadow: 5px 20px 50px #000;
+}
+
+.reset > label {
+    font-size: 110%;
+}
+
+.login_title, .reg_title, .reset_title{
+    color: #E3F6F5;
+    font-size: 2.3em;
+    justify-content: center;
+    display: flex;
+    margin: 60px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: .5s ease-in-out;
+}
+
+.scriere{
+    background-color: #E3F6F5;
+    border: 1px;
+    border-radius: 5px;
+}
+
+.butonlogin{
+    width: 60%;
+    justify-content: center;
+    display: block;
+    font-size: 1em;
+    font-weight: bold;
+    margin-top: 20px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    transition: .2s ease-in;
+    cursor: pointer;
+}
+
+.Auth{
+    background: #E3F6F5;
+}
+
+body{
+    background: #222430;
+}
+
+button {
+    background-color: #272643;
+    border-radius: 100px;
+    box-shadow: #2C698D 0 4px 8px;
+    color: white;
+    cursor: pointer;
+    display: inline-block;
+    font-family: CerebriSans-Regular,-apple-system,system-ui,Roboto,sans-serif;
+    text-align: center;
+    text-decoration: none;
+    transition: all 250ms;
+    border: 0;
+    font-size: 16px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    position: relative;
+}
+
+button:hover {
+    box-shadow: #2C698D 0 -25px 18px -14px inset,#2C698D 0 1px 2px,#2C698D 0 2px 4px,#2C698D 0 4px 8px,#2C698D 0 8px 16px,#2C698D 0 16px 32px;
+    transform: scale(1.05) rotate(-1deg);
+}
+
+.login, .reset, .logged{
+    display: block;
+    margin: auto;
+    width: fit-content;
+    text-align: center;
+    font-family: "Varela Round", sans-serif;
+    letter-spacing: 1.1px;
+}
+
+.title{
+    display: flex;
+    justify-content: flex-start;
+    position: relative;
+    width: 100em;
+    height: 15em;
+}
+  
+.title > div:first-of-type {
+    flex: 0 1 auto;
+    width: 60em;
+    height: 15em;
+    margin-left: auto;
+}
+
+.field > .raspuns {
+    display: block;
+    margin: auto;
+    width: fit-content;
+    text-align: center;
+    font-family: "Varela Round", sans-serif;
+    letter-spacing: 1.1px;
+}
+
+.login > .field, .register > .field, .reset > .field, .logged > .text {
+    margin-bottom: 25px;
+}
+
+.login > .buton, .register > .buton, .reset > .buton, .logged * .buton {
+    background-color: #272643;
+    font-family: "Varela Round", sans-serif;
+    letter-spacing: 1.1px;
+}
+
+.field > label{
+    color: #272643;
+    font-size: 1.5em;
+}
+
+.form > Button, .login > Button, .reset > Button{
+    margin: 25px;
+}

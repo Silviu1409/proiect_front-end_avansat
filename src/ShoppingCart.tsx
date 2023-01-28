@@ -9,7 +9,7 @@ function ShoppingCart() {
   return (
     <div className="Home">
       <header className="Home-header">
-        <Typography variant="h1" component="h1">
+        <Typography variant="h3" component="h3">
             ShoppingCart page
         </Typography>
       </header>

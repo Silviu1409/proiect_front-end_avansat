@@ -1,20 +1,126 @@
-import { Typography } from '@mui/material';
-import React from 'react';
+import { Box, IconButton, TextField, Button } from "@mui/material";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { useState } from "react";
+import { auth } from "./dbconfig";
+import { useNavigate } from "react-router";
 
-import './Home.scss';
+import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
+import PasswordOutlinedIcon from '@mui/icons-material/PasswordOutlined';
+import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
+import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined';
+
+import "./Stil.scss"
 
 
-function Login() {
+function Login(){
+    const [email, setEmail] = useState("");
+    const [passwd, setPasswd] = useState("");
 
-  return (
-    <div className="Home">
-      <header className="Home-header">
-        <Typography variant="h1" component="h1">
-            Login page
-        </Typography>
-      </header>
-    </div>
-  );
+    const [showPassword, setShowPassword] = useState(true);
+
+    const [emailError, setEmailError] = useState(false);
+    const [passwdError, setPasswdError] = useState(false);
+
+
+    const handleShowPassword = () => setShowPassword(!showPassword);
+
+    const navigate = useNavigate();
+
+    const login = async (event: any) => {
+        try{
+            event.preventDefault();
+
+            setEmailError(false);
+            setPasswdError(false);
+
+            await signInWithEmailAndPassword(auth, email, passwd);
+            
+            setEmail('');
+            setPasswd('');
+
+            navigate('/profile');
+        } catch (error: any){
+            if(error.code === "auth/invalid-email"){
+                setEmailError(true);
+            }
+            else if (error.code === "auth/wrong-password"){
+                setPasswdError(true);
+            } else if(error.code === "auth/user-not-found"){
+                setEmailError(true);
+                setPasswdError(true);
+            }
+        }
+    }
+    
+
+    return(
+        <div className = "login">
+
+            <label className="login_title">LOGIN</label>
+            
+            <Box
+                className = "field"
+                sx = {{ display: 'flex', alignItems: 'flex-start' }}
+            >
+                <EmailOutlinedIcon sx = {{ color: '#E3F6F5', mr: 2, mt: 2 }} />
+
+                <TextField
+                    className="scriere"
+                    variant = "outlined"
+                    error = {emailError}
+                    helperText = {emailError ? passwdError ? "Userul nu exista" : "Email incorect" : ""}
+                    placeholder = "Email"
+                    onChange = {(event) => {
+                        if(emailError){
+                            setEmailError(false);
+                        }
+                        setEmail(event.target.value);
+                    }}
+                    value = {email}
+                />
+                
+            </Box>
+            
+            <Box
+                className = "field"
+                sx = {{ display: 'flex', alignItems: 'flex-start' }}
+            >
+                <PasswordOutlinedIcon sx = {{ color: '#E3F6F5', mr: 2, mt: 2 }} />
+                <TextField
+                    variant = "outlined"
+                    className="scriere"
+                    error = {passwdError}
+                    helperText = {passwdError ? emailError ? "Userul nu exista" : "Parola incorecta" : ""}
+                    type = {showPassword ? "text" : "password"}
+                    placeholder = "Parola"
+                    onChange = {(event) => {
+                        if(passwdError){
+                            setPasswdError(false);
+                        }
+                        setPasswd(event.target.value);
+                    }}
+                    value = {passwd}
+                />
+                <IconButton
+                    onClick = { handleShowPassword }
+                    sx = {{ color: '#E3F6F5', ml: 2, mt: 1 }}
+                >
+                    {!showPassword ? <VisibilityOutlinedIcon /> : <VisibilityOffOutlinedIcon />}
+                </IconButton>
+            </Box>
+
+            <Button
+                className = "butonlogin"
+                variant = "contained"
+                onClick = {(event) => {
+                    login(event);
+                    }}>
+                        Login
+            </Button>
+        
+        </div>
+        
+    );
 }
 
 export default Login;

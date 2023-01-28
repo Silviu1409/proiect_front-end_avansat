@@ -35,8 +35,8 @@ function Contact() {
                 Service: 0771074389<br/><br/>
 
                 <a href="https://www.google.com/maps/place/ForIT/@44.4333605,26.1553322,15.5z/data=!4m5!3m4!1s0x0:0xdcb9e39e7453f875!8m2!3d44.433365!4d26.1553071" target="_blank" rel="noopener noreferrer" style={{textDecoration: "none", color: 'white'}}>
-                  Punct de lucru (ridicare comenzi)
-                </a><br/><br/>
+                  Punct de lucru (ridicare comenzi):
+                </a><br/>
                     &emsp; Bulevardul Basarabia, nr. 104, Bucuresti, Sector 2, 022123
               </Typography>
             </div>

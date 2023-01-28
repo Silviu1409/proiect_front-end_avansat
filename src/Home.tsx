@@ -1,5 +1,5 @@
 import { Typography } from '@mui/material';
-import React from 'react';
+
 import './Home.scss';
 
 
@@ -13,7 +13,7 @@ function Home() {
       </header>
 
       <div>
-        <div className='content'>
+        <div className='content_home'>
           <div>
             <Typography variant="h5" component="h5">
               Avem la dispozitie Componente PC din 7 categorii:<br/>
