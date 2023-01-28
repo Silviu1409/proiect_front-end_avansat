@@ -51,7 +51,5 @@ export async function getCases_placa_compat(placa_compat: string){
         carcase.push(obj);
     });
 
-    console.log(carcase);
-
     return carcase;
 }

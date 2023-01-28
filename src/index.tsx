@@ -18,9 +18,8 @@ import Case from './products/Case';
 
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
-// import { Provider } from 'react-redux/es/exports';
-// import { getAll } from './app/features/case/caseReducer';
-// import store from './app/store';
+import { Provider } from 'react-redux/es/exports';
+import { store } from './app/store';
 
 import './index.scss';
 
@@ -29,10 +28,9 @@ const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 
-// store.dispatch(getAll);
 
 root.render(
-  // <Provider store={store}>
+  <Provider store={store}>
     <Router>
       
       <NavBar />
@@ -71,5 +69,5 @@ root.render(
       </Routes>
 
     </Router>
-  // </Provider>
+  </Provider>
 );

@@ -57,7 +57,7 @@ function Reset(){
             </Box>
 
             <Button 
-                className = "butonlogin"
+                className = "butonReset"
                 variant = "contained"
                 onClick={(event) => {
                     sendPasswordReset(event);

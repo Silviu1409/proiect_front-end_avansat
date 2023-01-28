@@ -23,7 +23,7 @@ function Register(){
     const [nume, setNume] = useState("");
     const [prenume, setPrenume] = useState("");
 
-    const [showPassword, setShowPassword] = useState(true);
+    const [showPassword, setShowPassword] = useState(false);
 
     const [emailUsedError, setEmailUsedError] = useState(false);
     const [emailInvalidError, setEmailInvalidError] = useState(false);
@@ -44,7 +44,14 @@ function Register(){
                 await setDoc(doc(db, "users", res.user.uid), {
                     email: email,
                     nume: nume,
-                    prenume: prenume
+                    prenume: prenume,
+                    nr_tel: "",
+                    data_nastere: {
+                        zi: "",
+                        luna: "",
+                        an: ""
+                    },
+                    comenzi: []
                 });
 
                 setEmail('');
@@ -52,7 +59,7 @@ function Register(){
                 setNume('');
                 setPrenume('');
 
-                navigate('/home');
+                navigate('/');
             })
             .catch((error) => {
                 if(error.code === "auth/weak-password"){
@@ -162,7 +169,7 @@ function Register(){
             </Box>
 
             <Button 
-                className = "butonlogin"
+                className = "butonRegister"
                 variant = "contained"
                 onClick={(event) => {
                     register(event);

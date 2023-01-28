@@ -2,7 +2,7 @@
   text-align: center;
 }
 
-.Home-header, .Profile-header {
+.Home-header, .profile-header {
   font-family: "Varela Round", sans-serif;
   display: flex;
   flex-direction: column;
@@ -12,7 +12,7 @@
   color: white;
 }
 
-.content_home{
+.content_home, .profile_content{
   text-align: left;
   padding-left: 7.5vw;
   padding-top: 10vh;
@@ -21,11 +21,17 @@
   font-family: "Varela Round", sans-serif;
 }
 
-.profile_content{
-  text-align: center;
-  padding-left: 7.5vw;
-  padding-top: 10vh;
-  padding-bottom: 5vh;
+.profile_form > * > *{
+  padding-top: 5vh;
+}
+
+.field > .scris{
+  text-align: left;
   color: white;
   font-family: "Varela Round", sans-serif;
+  margin-top: 1.5vh;
+}
+
+.buton_logout{
+  margin-left: 10vw;
 }

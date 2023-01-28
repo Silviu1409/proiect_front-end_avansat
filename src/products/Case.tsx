@@ -1,8 +1,6 @@
 import { Typography, FormControl, Select, MenuItem, SelectChangeEvent, FormLabel, RadioGroup, FormControlLabel, Radio, Button, Fab } from '@mui/material';
 import React, { useEffect, useState } from 'react';
-// import { useAppSelector, useAppDispatch } from '../app/hooks';
-// import { getAll } from '../app/features/case/caseReducer';
-import { getCases, getCases_placa_compat } from '../controllers/Case_Controller';
+import { getCases } from '../controllers/Case_Controller';
 import { ICase } from '../interfaces/ICase';
 import CaseItem from './CaseItem';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
@@ -11,11 +9,12 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import "./Stil.scss";
 import "./CaseStil.scss";
 import { NavLink } from 'react-router-dom';
+import { useGetAllCasesQuery, useGetCases_placa_compatMutation } from '../app/features/case/caseApi';
 
 
 function Case() {
-    // const carcase = useAppSelector((state) => state.case.carcase)
-    // const dispatch = useAppDispatch()
+    const {data: getAllData, isLoading: isLoadingAll} = useGetAllCasesQuery();
+    const [getCases_placa_compat] = useGetCases_placa_compatMutation();
     const [carcase, setCarcase] = useState(Array<ICase>);
     const [sort, setSort] = useState("");
     const [filtrare, setFiltrare] = useState("");
@@ -43,13 +42,14 @@ function Case() {
         sorting(event.target.value);
     }
 
-    const handleFiltering = (event: SelectChangeEvent) => {
+    const handleFiltering = async(event: SelectChangeEvent) => {
         setFiltrare(event.target.value);
 
-        getCases_placa_compat(event.target.value)
-        .then((data) => {
-            setCarcase(data);
-        });
+        const res = await getCases_placa_compat(event.target.value).unwrap();
+
+        if(res){
+            setCarcase([... res]);
+        }
 
         setSort("");
     }
@@ -63,19 +63,16 @@ function Case() {
     }
 
     useEffect(() =>{
-        getCases().then((data) => {
-            setCarcase(data);
-        });
-
-        // carcase.then((value) =>{
-        //     console.log(value);
-        //     // value.forEach(elem => console.log(elem));
-        // }).catch((err) => {
-        //     console.log(err);
-        // });
-
-        // dispatch(getAll());
-    }, []);
+        if(isLoadingAll){
+            return;
+        }
+        else if(getAllData){
+            setCarcase([... getAllData]);
+        } else {
+            setCarcase([]);
+        }
+        console.log(".")
+    }, [isLoadingAll, getAllData]);
 
 
     return(

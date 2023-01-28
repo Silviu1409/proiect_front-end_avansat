@@ -1,13 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
+import { setupListeners } from "@reduxjs/toolkit/query";
+import { caseApi } from "./features/case/caseApi";
 
-import caseReducer from './features/case/caseReducer';
 
-const store = configureStore({
+export const store = configureStore({
     reducer: {
-        case: caseReducer,
+        [caseApi.reducerPath]: caseApi.reducer
     },
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(caseApi.middleware),
 })
 
-export default store
-export type RootState = ReturnType<typeof store.getState>
-export type AppDispatch = typeof store.dispatch
+setupListeners(store.dispatch);
