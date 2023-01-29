@@ -19,7 +19,7 @@ import Case from './products/Case';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 import { Provider } from 'react-redux/es/exports';
-import { store } from './app/store';
+import { store } from './store/store';
 
 import './index.scss';
 

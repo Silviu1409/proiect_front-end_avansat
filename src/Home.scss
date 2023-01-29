@@ -7,7 +7,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 10vh;
+  padding-top: 5vh;
   font-size: calc(10px + 2vmin);
   color: white;
 }
@@ -16,13 +16,12 @@
   text-align: left;
   padding-left: 7.5vw;
   padding-top: 10vh;
-  padding-bottom: 5vh;
   color: white;
   font-family: "Varela Round", sans-serif;
 }
 
 .profile_form > * > *{
-  padding-top: 5vh;
+  padding-top: 3.5vh;
 }
 
 .field > .scris{
@@ -32,6 +31,18 @@
   margin-top: 1.5vh;
 }
 
+.profile_form > .submit{
+  text-align: left;
+  color: white;
+  font-family: "Varela Round", sans-serif;
+  margin-top: 5vh;
+  margin-left: 7.5vw;
+  margin-bottom: 5vh;
+}
+
 .buton_logout{
-  margin-left: 10vw;
+  margin: auto;
+  width: fit-content;
+  display: flex;
+  justify-content: center;
 }

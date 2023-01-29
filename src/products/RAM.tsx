@@ -1,17 +1,18 @@
 import { Typography, FormControl, Select, MenuItem, SelectChangeEvent, FormLabel, RadioGroup, FormControlLabel, Radio, Button, Fab } from '@mui/material';
 import React, { useEffect, useState } from 'react';
-import { getRAMs, getRAMs_filter } from '../controllers/RAM_Controller';
 import { IRAM } from '../interfaces/IRAM';
 import RAMItem from './RAMItem';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-
+import { NavLink } from 'react-router-dom';
+import { useGetAllRAMsQuery, useGetRAMs_filterMutation } from '../store/RAMApi';
 
 import "./Stil.scss";
 import "./RAMStil.scss";
-import { NavLink } from 'react-router-dom';
 
 
 function RAM() {
+    const {data, isLoading} = useGetAllRAMsQuery();
+    const [getRAMs_filter] = useGetRAMs_filterMutation();
     const [RAMs, setRAMs] = useState(Array<IRAM>);
     const [sort, setSort] = useState("");
     const [filtrareCapacitate, setFiltrareCapacitate] = useState("");
@@ -40,7 +41,7 @@ function RAM() {
         sorting(event.target.value);
     }
 
-    const handleFiltering = (event: SelectChangeEvent, field: string) => {
+    const handleFiltering = async (event: SelectChangeEvent, field: string) => {
         switch(field){
             case "capacitate": {
                 setFiltrareCapacitate(event.target.value);
@@ -57,10 +58,11 @@ function RAM() {
             }
         }
 
-        getRAMs_filter(field, event.target.value)
-        .then((data) => {
-            setRAMs(data);
-        });
+        const res = await getRAMs_filter({field: field, val: event.target.value}).unwrap();
+
+        if(res){
+            setRAMs([...res]);
+        }
 
         setSort("");
     }
@@ -69,16 +71,20 @@ function RAM() {
         setFiltrareCapacitate("");
         setFiltrareTip("");
 
-        getRAMs().then((data) => {
-            setRAMs(data);
-        });
+        if(data)
+            setRAMs([...data]);
     }
 
     useEffect(() =>{
-        getRAMs().then((data) => {
-            setRAMs(data);
-        });
-    }, []);
+        if(isLoading){
+            return;
+        }
+        else if(data){
+            setRAMs([...data]);
+        } else {
+            setRAMs([]);
+        }
+    }, [isLoading, data]);
 
 
     return(

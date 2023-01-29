@@ -46,11 +46,6 @@ function Register(){
                     nume: nume,
                     prenume: prenume,
                     nr_tel: "",
-                    data_nastere: {
-                        zi: "",
-                        luna: "",
-                        an: ""
-                    },
                     comenzi: []
                 });
 
@@ -59,7 +54,7 @@ function Register(){
                 setNume('');
                 setPrenume('');
 
-                navigate('/');
+                navigate('/profile');
             })
             .catch((error) => {
                 if(error.code === "auth/weak-password"){

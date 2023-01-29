@@ -17,7 +17,6 @@ function Profile(user: any) {
   const [prenume, setPrenume] = useState("");
   const [email, setEmail] = useState("");
   const [nr_tel, setNr_tel] = useState("");
-  const [data_nastere, setData_nastere] = useState({zi: "", luna: "", an: ""});
   const [comenzi, setComenzi] = useState([]);
 
   const id = user.user.uid;
@@ -34,7 +33,6 @@ function Profile(user: any) {
           setPrenume(res.prenume);
           setEmail(res.email);
           setNr_tel(res.nr_tel);
-          setData_nastere(res.data_nastere);
           setComenzi(res.comenzi);
         }
     })
@@ -43,14 +41,13 @@ function Profile(user: any) {
 
   const handleSubmit = (event: any) => {
 
-    const ref = doc(db, "contract", id);
+    const ref = doc(db, "users", id);
 
     updateDoc(ref, {
       email: email,
       nume: nume,
       prenume: prenume,
       nr_tel: nr_tel,
-      data_nastere: data_nastere,
       comenzi: comenzi
     });     
     
@@ -151,88 +148,31 @@ function Profile(user: any) {
                 />
             </Box>
 
-            <Typography variant="h5" component="h5" className='field'>
-              Data nasterii:
-            </Typography>
-
-            <Box
-                className = "field"
-                sx = {{ display: 'flex', width: "fit-content", columnGap: "1.5vw" }}
-            >
-                <label className='scris'>Zi:</label>
-                <TextField
-                    className = "raspuns"
-                    variant = "outlined"
-                    placeholder = {data_nastere.zi}
-                    onChange = {(e) => {
-                        setData_nastere({zi: e.target.value, luna: data_nastere.luna, an: data_nastere.an});
-                    }}
-                    value = {data_nastere.zi}
-                    sx={{
-                      borderWidth: "1px",
-                      borderRadius: "12px",
-                      borderColor: "white",
-                      borderStyle: "solid",
-                      input: {color: "white"}
-                    }}
-                />
-
-                <label className='scris'>Luna:</label>
-                <TextField
-                    className = "raspuns"
-                    variant = "outlined"
-                    placeholder = {data_nastere.luna}
-                    onChange = {(e) => {
-                        setData_nastere({zi: data_nastere.zi, luna: e.target.value, an: data_nastere.an});
-                    }}
-                    value = {data_nastere.luna}
-                    sx={{
-                      borderWidth: "1px",
-                      borderRadius: "12px",
-                      borderColor: "white",
-                      borderStyle: "solid",
-                      input: {color: "white"}
-                    }}
-                />
-
-                <label className='scris'>An:</label>
-                <TextField
-                    className = "raspuns"
-                    variant = "outlined"
-                    placeholder = {data_nastere.an}
-                    onChange = {(e) => {
-                        setData_nastere({zi: data_nastere.zi, luna: data_nastere.luna, an: e.target.value});
-                    }}
-                    value = {data_nastere.an}
-                    sx={{
-                      borderWidth: "1px",
-                      borderRadius: "12px",
-                      borderColor: "white",
-                      borderStyle: "solid",
-                      input: {color: "white"}
-                    }}
-                />
-            </Box>
-
           </div>
 
-          <Button className='b1' type='submit' >Update</Button>
+          <Button 
+            className = 'submit'
+            type = 'submit'
+            variant = "contained"
+            color = "warning">
+              Update
+          </Button>
           
         </form>
 
-        <Link to="/" className = "buton_logout">
-          <Button 
-            
-            variant = "contained"
-            color = "error"
-            onClick={() => {
-                logout();
-                }}>
-                    Logout
-          </Button>
-        </Link>
       </div>
-
+      
+      <Link to="/" className = "buton_logout">
+        <Button 
+          
+          variant = "contained"
+          color = "error"
+          onClick={() => {
+              logout();
+              }}>
+                  Logout
+        </Button>
+      </Link>
       
     </div>
   );

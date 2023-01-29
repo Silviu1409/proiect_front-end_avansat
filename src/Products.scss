@@ -25,7 +25,8 @@
 .categories{
     display: flex;
     flex-wrap: wrap;
-    padding: 0vh 3vw 5vh 3vw;
+    padding: 0vh 3vw 0vh 3vw;
+    row-gap: 5vh;
 }
 
 .categories > * {
@@ -37,7 +38,7 @@
     margin: 5px;
     height: 30vh;
     width: 20vw;
-    margin: 2.5vh 0 7.5vh 2.5vw;
+    margin: 2.5vh 0 5vh 2.5vw;
     text-align: center;
 }
 

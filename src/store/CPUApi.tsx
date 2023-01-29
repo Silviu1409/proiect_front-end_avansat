@@ -1,16 +1,16 @@
 import { createApi, fakeBaseQuery } from '@reduxjs/toolkit/query/react'
-import { getCases, getCases_placa_compat } from '../../../controllers/Case_Controller';
+import { getCPUs, getCPUs_filter } from '../controllers/CPU_Controller';
 import { DocumentData } from 'firebase/firestore';
 
-export const caseApi = createApi({
-    reducerPath: "caseApi",
+export const CPUApi = createApi({
+    reducerPath: "CPUApi",
     baseQuery: fakeBaseQuery(),
     endpoints: (builder) => ({
-        getAllCases:  builder.query<[], void>({
+        getAllCPUs:  builder.query<[], void>({
             queryFn: async() => {
                 try{
                     let result: [] = [];
-                    await getCases()
+                    await getCPUs()
                     .then(
                         (data: DocumentData[]) => {
                             result = data as [];
@@ -22,12 +22,11 @@ export const caseApi = createApi({
                 }
             }
         }),
-        getCases_placa_compat:  builder.mutation<[], string>({
-            queryFn: async(placa_compat) => {
+        getCPUs_filter:  builder.mutation<[], {field: string, val: any}>({
+            queryFn: async({field, val}) => {
                 try{
                     let result: [] = [];
-                    console.log(placa_compat);
-                    await getCases_placa_compat(placa_compat)
+                    await getCPUs_filter(field, val)
                     .then(
                         (data: DocumentData[]) => {
                             result = data as [];
@@ -42,4 +41,4 @@ export const caseApi = createApi({
     })
 });
 
-export const { useGetAllCasesQuery, useGetCases_placa_compatMutation } = caseApi;
+export const { useGetAllCPUsQuery, useGetCPUs_filterMutation } = CPUApi;

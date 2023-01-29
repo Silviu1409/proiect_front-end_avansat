@@ -1,17 +1,18 @@
 import { Typography, FormControl, Select, MenuItem, SelectChangeEvent, FormLabel, RadioGroup, FormControlLabel, Radio, Button, Fab } from '@mui/material';
 import React, { useEffect, useState } from 'react';
-import { getMBDs, getMBDs_filter } from '../controllers/MBD_Controller';
 import { IMBD } from '../interfaces/IMBD';
 import MBDItem from './MBDItem';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-
+import { NavLink } from 'react-router-dom';
+import { useGetAllMBDsQuery, useGetMBDs_filterMutation } from '../store/MBDApi';
 
 import "./Stil.scss";
 import "./MBDStil.scss";
-import { NavLink } from 'react-router-dom';
 
 
 function MBD() {
+    const {data, isLoading} = useGetAllMBDsQuery();
+    const [getMBDs_filter] = useGetMBDs_filterMutation();
     const [MBDs, setMBDs] = useState(Array<IMBD>);
     const [sort, setSort] = useState("");
     const [filtrareSocket, setFiltrareSocket] = useState("");
@@ -41,7 +42,7 @@ function MBD() {
         sorting(event.target.value);
     }
 
-    const handleFiltering = (event: SelectChangeEvent, field: string) => {
+    const handleFiltering = async (event: SelectChangeEvent, field: string) => {
         switch(field){
             case "socket": {
                 setFiltrareSocket(event.target.value);
@@ -66,10 +67,11 @@ function MBD() {
             }
         }
 
-        getMBDs_filter(field, event.target.value)
-        .then((data) => {
-            setMBDs(data);
-        });
+        const res = await getMBDs_filter({field: field, val: event.target.value}).unwrap();
+
+        if(res){
+            setMBDs([...res]);
+        }
 
         setSort("");
     }
@@ -79,16 +81,20 @@ function MBD() {
         setFiltrareTip("");
         setFiltrareM2("");
 
-        getMBDs().then((data) => {
-            setMBDs(data);
-        });
+        if(data)
+            setMBDs([...data]);
     }
 
     useEffect(() =>{
-        getMBDs().then((data) => {
-            setMBDs(data);
-        });
-    }, []);
+        if(isLoading){
+            return;
+        }
+        else if(data){
+            setMBDs([...data]);
+        } else {
+            setMBDs([]);
+        }
+    }, [isLoading, data]);
 
 
     return(

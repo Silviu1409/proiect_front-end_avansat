@@ -1,17 +1,18 @@
 import { Typography, FormControl, Select, MenuItem, SelectChangeEvent, FormLabel, RadioGroup, FormControlLabel, Radio, Button, Fab } from '@mui/material';
 import React, { useEffect, useState } from 'react';
-import { getGPUs, getGPUs_filter } from '../controllers/GPU_Controller';
 import { IGPU } from '../interfaces/IGPU';
 import GPUItem from './GPUItem';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-
+import { NavLink } from 'react-router-dom';
+import { useGetAllGPUsQuery, useGetGPUs_filterMutation } from '../store/GPUApi';
 
 import "./Stil.scss";
 import "./GPUStil.scss";
-import { NavLink } from 'react-router-dom';
 
 
 function GPU() {
+    const {data, isLoading} = useGetAllGPUsQuery();
+    const [getGPUs_filter] = useGetGPUs_filterMutation();
     const [GPUs, setGPUs] = useState(Array<IGPU>);
     const [sort, setSort] = useState("");
     const [filtrareChipset, setFiltrareChipset] = useState("");
@@ -40,7 +41,7 @@ function GPU() {
         sorting(event.target.value);
     }
 
-    const handleFiltering = (event: SelectChangeEvent, field: string) => {
+    const handleFiltering = async (event: SelectChangeEvent, field: string) => {
         switch(field){
             case "chipset": {
                 setFiltrareChipset(event.target.value);
@@ -57,10 +58,11 @@ function GPU() {
             }
         }
 
-        getGPUs_filter(field, event.target.value)
-        .then((data) => {
-            setGPUs(data);
-        });
+        const res = await getGPUs_filter({field: field, val: event.target.value}).unwrap();
+
+        if(res){
+            setGPUs([...res]);
+        }
 
         setSort("");
     }
@@ -69,23 +71,27 @@ function GPU() {
         setFiltrareChipset("");
         setFiltrareMemorie("");
 
-        getGPUs().then((data) => {
-            setGPUs(data);
-        });
+        if(data)
+            setGPUs([...data]);
     }
 
     useEffect(() =>{
-        getGPUs().then((data) => {
-            setGPUs(data);
-        });
-    }, []);
+        if(isLoading){
+            return;
+        }
+        else if(data){
+            setGPUs([...data]);
+        } else {
+            setGPUs([]);
+        }
+    }, [isLoading, data]);
 
 
     return(
         <div className='pag_gpus'>
             <header className="pag_gpus-header">
                 <Typography variant="h3" component="h3">
-                    Procesoare
+                    Placi video
                 </Typography>
             </header>
 

@@ -1,17 +1,18 @@
 import { Typography, FormControl, Select, MenuItem, SelectChangeEvent, FormLabel, RadioGroup, FormControlLabel, Radio, Button, Fab } from '@mui/material';
 import React, { useEffect, useState } from 'react';
-import { getSSDs, getSSDs_filter } from '../controllers/SSD_Controller';
 import { ISSD } from '../interfaces/ISSD';
 import SSDItem from './SSDItem';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-
+import { NavLink } from 'react-router-dom';
+import { useGetAllSSDsQuery, useGetSSDs_filterMutation } from '../store/SSDApi';
 
 import "./Stil.scss";
 import "./SSDStil.scss";
-import { NavLink } from 'react-router-dom';
 
 
 function SSD() {
+    const {data, isLoading} = useGetAllSSDsQuery();
+    const [getSSDs_filter] = useGetSSDs_filterMutation();
     const [SSDs, setSSDs] = useState(Array<ISSD>);
     const [sort, setSort] = useState("");
     const [filtrareFormFactor, setFiltrareFormFactor] = useState("");
@@ -39,7 +40,7 @@ function SSD() {
         sorting(event.target.value);
     }
 
-    const handleFiltering = (event: SelectChangeEvent, field: string) => {
+    const handleFiltering = async (event: SelectChangeEvent, field: string) => {
         switch(field){
             case "form_factor": {
                 setFiltrareFormFactor(event.target.value);
@@ -50,10 +51,11 @@ function SSD() {
             }
         }
 
-        getSSDs_filter(field, event.target.value)
-        .then((data) => {
-            setSSDs(data);
-        });
+        const res = await getSSDs_filter({field: field, val: event.target.value}).unwrap();
+
+        if(res){
+            setSSDs([...res]);
+        }
 
         setSort("");
     }
@@ -61,16 +63,20 @@ function SSD() {
     const resetFilters = () => {
         setFiltrareFormFactor("");
 
-        getSSDs().then((data) => {
-            setSSDs(data);
-        });
+        if(data)
+            setSSDs([...data]);
     }
 
     useEffect(() =>{
-        getSSDs().then((data) => {
-            setSSDs(data);
-        });
-    }, []);
+        if(isLoading){
+            return;
+        }
+        else if(data){
+            setSSDs([...data]);
+        } else {
+            setSSDs([]);
+        }
+    }, [isLoading, data]);
 
 
     return(

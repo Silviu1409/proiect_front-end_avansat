@@ -1,17 +1,18 @@
 import { Typography, FormControl, Select, MenuItem, SelectChangeEvent, FormLabel, RadioGroup, FormControlLabel, Radio, Button, Fab } from '@mui/material';
 import React, { useEffect, useState } from 'react';
-import { getCPUs, getCPUs_filter } from '../controllers/CPU_Controller';
 import { ICPU } from '../interfaces/ICPU';
 import CPUItem from './CPUItem';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-
+import { NavLink } from 'react-router-dom';
+import { useGetAllCPUsQuery, useGetCPUs_filterMutation } from '../store/CPUApi';
 
 import "./Stil.scss";
 import "./CPUStil.scss";
-import { NavLink } from 'react-router-dom';
 
 
 function CPU() {
+    const {data, isLoading} = useGetAllCPUsQuery();
+    const [getCPUs_filter] = useGetCPUs_filterMutation();
     const [CPUs, setCPUs] = useState(Array<ICPU>);
     const [sort, setSort] = useState("");
     const [filtrareProd, setFiltrareProd] = useState("");
@@ -41,7 +42,7 @@ function CPU() {
         sorting(event.target.value);
     }
 
-    const handleFiltering = (event: SelectChangeEvent, field: string) => {
+    const handleFiltering = async (event: SelectChangeEvent, field: string) => {
         switch(field){
             case "producator": {
                 setFiltrareProd(event.target.value);
@@ -54,10 +55,11 @@ function CPU() {
                 setFiltrareProd("");
                 setFiltrareSocket("");
 
-                getCPUs_filter(field, Number(event.target.value))
-                .then((data) => {
-                    setCPUs(data);
-                });
+                const res = await getCPUs_filter({field: field, val: Number(event.target.value)}).unwrap();
+
+                if(res){
+                    setCPUs([...res]);
+                }
 
                 setSort("");
 
@@ -74,10 +76,11 @@ function CPU() {
             }
         }
 
-        getCPUs_filter(field, event.target.value)
-        .then((data) => {
-            setCPUs(data);
-        });
+        const res = await getCPUs_filter({field: field, val: event.target.value}).unwrap();
+
+        if(res){
+            setCPUs([...res]);
+        }
 
         setSort("");
     }
@@ -87,16 +90,20 @@ function CPU() {
         setFiltrareNuclee(0);
         setFiltrareSocket("");
 
-        getCPUs().then((data) => {
-            setCPUs(data);
-        });
+        if(data)
+            setCPUs([...data]);
     }
 
     useEffect(() =>{
-        getCPUs().then((data) => {
-            setCPUs(data);
-        });
-    }, []);
+        if(isLoading){
+            return;
+        }
+        else if(data){
+            setCPUs([...data]);
+        } else {
+            setCPUs([]);
+        }
+    }, [isLoading, data]);
 
 
     return(

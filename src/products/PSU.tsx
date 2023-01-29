@@ -1,17 +1,18 @@
 import { Typography, FormControl, Select, MenuItem, SelectChangeEvent, FormLabel, RadioGroup, FormControlLabel, Radio, Button, Fab } from '@mui/material';
 import React, { useEffect, useState } from 'react';
-import { getPSUs, getPSUs_filter } from '../controllers/PSU_Controller';
 import { IPSU } from '../interfaces/IPSU';
 import PSUItem from './PSUItem';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-
+import { NavLink } from 'react-router-dom';
+import { useGetAllPSUsQuery, useGetPSUs_filterMutation } from '../store/PSUApi';
 
 import "./Stil.scss";
 import "./PSUStil.scss";
-import { NavLink } from 'react-router-dom';
 
 
 function PSU() {
+    const {data, isLoading} = useGetAllPSUsQuery();
+    const [getPSUs_filter] = useGetPSUs_filterMutation();
     const [PSUs, setPSUs] = useState(Array<IPSU>);
     const [sort, setSort] = useState("");
     const [filtrareCert, setFiltrareCert] = useState("");
@@ -40,7 +41,7 @@ function PSU() {
         sorting(event.target.value);
     }
 
-    const handleFiltering = (event: SelectChangeEvent, field: string) => {
+    const handleFiltering = async (event: SelectChangeEvent, field: string) => {
         switch(field){
             case "certificare": {
                 setFiltrareCert(event.target.value);
@@ -57,10 +58,11 @@ function PSU() {
             }
         }
 
-        getPSUs_filter(field, event.target.value)
-        .then((data) => {
-            setPSUs(data);
-        });
+        const res = await getPSUs_filter({field: field, val: event.target.value}).unwrap();
+
+        if(res){
+            setPSUs([...res]);
+        }
 
         setSort("");
     }
@@ -69,16 +71,20 @@ function PSU() {
         setFiltrareModulara("");
         setFiltrareCert("");
 
-        getPSUs().then((data) => {
-            setPSUs(data);
-        });
+        if(data)
+            setPSUs([...data]);
     }
 
     useEffect(() =>{
-        getPSUs().then((data) => {
-            setPSUs(data);
-        });
-    }, []);
+        if(isLoading){
+            return;
+        }
+        else if(data){
+            setPSUs([...data]);
+        } else {
+            setPSUs([]);
+        }
+    }, [isLoading, data]);
 
 
     return(

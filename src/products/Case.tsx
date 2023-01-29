@@ -1,19 +1,17 @@
 import { Typography, FormControl, Select, MenuItem, SelectChangeEvent, FormLabel, RadioGroup, FormControlLabel, Radio, Button, Fab } from '@mui/material';
 import React, { useEffect, useState } from 'react';
-import { getCases } from '../controllers/Case_Controller';
 import { ICase } from '../interfaces/ICase';
 import CaseItem from './CaseItem';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-
+import { NavLink } from 'react-router-dom';
+import { useGetAllCasesQuery, useGetCases_placa_compatMutation } from '../store/caseApi';
 
 import "./Stil.scss";
 import "./CaseStil.scss";
-import { NavLink } from 'react-router-dom';
-import { useGetAllCasesQuery, useGetCases_placa_compatMutation } from '../app/features/case/caseApi';
 
 
 function Case() {
-    const {data: getAllData, isLoading: isLoadingAll} = useGetAllCasesQuery();
+    const {data, isLoading} = useGetAllCasesQuery();
     const [getCases_placa_compat] = useGetCases_placa_compatMutation();
     const [carcase, setCarcase] = useState(Array<ICase>);
     const [sort, setSort] = useState("");
@@ -42,13 +40,13 @@ function Case() {
         sorting(event.target.value);
     }
 
-    const handleFiltering = async(event: SelectChangeEvent) => {
+    const handleFiltering = async (event: SelectChangeEvent) => {
         setFiltrare(event.target.value);
 
         const res = await getCases_placa_compat(event.target.value).unwrap();
 
         if(res){
-            setCarcase([... res]);
+            setCarcase([...res]);
         }
 
         setSort("");
@@ -57,22 +55,20 @@ function Case() {
     const resetFilters = () => {
         setFiltrare("");
 
-        getCases().then((data) => {
-            setCarcase(data);
-        });
+        if(data)
+            setCarcase([...data]);
     }
 
     useEffect(() =>{
-        if(isLoadingAll){
+        if(isLoading){
             return;
         }
-        else if(getAllData){
-            setCarcase([... getAllData]);
+        else if(data){
+            setCarcase([...data]);
         } else {
             setCarcase([]);
         }
-        console.log(".")
-    }, [isLoadingAll, getAllData]);
+    }, [isLoading, data]);
 
 
     return(
