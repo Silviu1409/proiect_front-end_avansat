@@ -1,26 +1,9 @@
-import { useAuthState } from "react-firebase-hooks/auth";
-import React, { useEffect } from 'react';
-import { auth } from './dbconfig';
-import { NavLink, Route, Routes } from "react-router-dom";
-
-import Profile from './Profile';
-import Auth from "./Auth";
-
-import { ProtectedProfileRoute } from './ProtectedProfileRoute';
-import { ProtectedAuthRoute } from "./ProtectedAuthRoute";
+import { NavLink } from "react-router-dom";
 
 import './NavBar.scss';
 
 
-function NavBar() {
-  const [user, loading] = useAuthState(auth);
-
-  useEffect(() => {
-    if (loading){
-        return;
-    }
-  }, [loading, user]);
-
+function NavBar(user: any) {
   return (
     <div>
       <div className="navigation ">
@@ -41,7 +24,7 @@ function NavBar() {
                 </li>
 
                 {
-                  !user 
+                  !user.user 
                     ?
                       <li className="nav-item">
                         <NavLink className="nav-link" to="/auth">
@@ -80,18 +63,6 @@ function NavBar() {
           </div>
         </nav>
       </div>
-
-      <Routes>
-        {/* Ruta privata pentru pagina de Profil */}
-        <Route element={<ProtectedAuthRoute user={user} />}>
-          <Route element={<Auth />} path="/auth"/>
-        </Route>
-        
-        {/* Ruta privata pentru pagina de Profil */}
-        <Route element={<ProtectedProfileRoute user={user} />}>
-          <Route element={<Profile user={user} />} path="/profile"/>
-        </Route>
-      </Routes>
     </div>
   );
 }
