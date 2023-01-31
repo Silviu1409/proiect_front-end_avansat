@@ -1,6 +1,6 @@
 import { Box, TextField, Button } from '@mui/material';
 import { sendPasswordResetEmail } from 'firebase/auth';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { auth } from './dbconfig';
 
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
@@ -32,7 +32,6 @@ function Reset(){
 
     return(
         <div className = "reset">
-
             <label className='reset_title'>RESET PASSWORD</label>
 
             <Box

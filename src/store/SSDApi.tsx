@@ -2,6 +2,7 @@ import { createApi, fakeBaseQuery } from '@reduxjs/toolkit/query/react'
 import { getSSDs, getSSDs_filter } from '../controllers/SSD_Controller';
 import { DocumentData } from 'firebase/firestore';
 
+
 export const SSDApi = createApi({
     reducerPath: "SSDApi",
     baseQuery: fakeBaseQuery(),

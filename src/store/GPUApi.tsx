@@ -2,6 +2,7 @@ import { createApi, fakeBaseQuery } from '@reduxjs/toolkit/query/react'
 import { getGPUs, getGPUs_filter } from '../controllers/GPU_Controller';
 import { DocumentData } from 'firebase/firestore';
 
+
 export const GPUApi = createApi({
     reducerPath: "GPUApi",
     baseQuery: fakeBaseQuery(),

@@ -2,6 +2,7 @@ import { createApi, fakeBaseQuery } from '@reduxjs/toolkit/query/react'
 import { getMBDs, getMBDs_filter } from '../controllers/MBD_Controller';
 import { DocumentData } from 'firebase/firestore';
 
+
 export const MBDApi = createApi({
     reducerPath: "MBDApi",
     baseQuery: fakeBaseQuery(),

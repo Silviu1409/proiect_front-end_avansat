@@ -8,7 +8,6 @@ var ATX: Map<boolean, string> = new Map([[true, "ATX"], [false, ""]]);
 var mATX: Map<boolean, string> = new Map([[true, "mATX"], [false, ""]]);
 var mITX: Map<boolean, string> = new Map([[true, "mITX"], [false, ""]]);
 
-
 const CaseItem = (item: ICase)  => {
     return (
         <div key={item.id} className="item">

@@ -2,6 +2,7 @@ import { createApi, fakeBaseQuery } from '@reduxjs/toolkit/query/react'
 import { getCPUs, getCPUs_filter } from '../controllers/CPU_Controller';
 import { DocumentData } from 'firebase/firestore';
 
+
 export const CPUApi = createApi({
     reducerPath: "CPUApi",
     baseQuery: fakeBaseQuery(),

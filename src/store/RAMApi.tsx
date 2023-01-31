@@ -2,6 +2,7 @@ import { createApi, fakeBaseQuery } from '@reduxjs/toolkit/query/react'
 import { getRAMs, getRAMs_filter } from '../controllers/RAM_Controller';
 import { DocumentData } from 'firebase/firestore';
 
+
 export const RAMApi = createApi({
     reducerPath: "RAMApi",
     baseQuery: fakeBaseQuery(),

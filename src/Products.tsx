@@ -1,5 +1,4 @@
 import { Typography, Fab, Box } from '@mui/material';
-import React from 'react';
 import { NavLink } from 'react-router-dom';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 

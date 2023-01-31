@@ -2,7 +2,7 @@ import { doc, getDoc, getFirestore } from '@firebase/firestore';
 import { Box, Button, TextField, Typography } from '@mui/material';
 import { signOut } from 'firebase/auth';
 import { updateDoc } from 'firebase/firestore';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { app, auth } from './dbconfig';
 
@@ -10,7 +10,6 @@ import './Home.scss';
 
 
 const db = getFirestore(app);
-
 
 function Profile(user: any) {
   const [nume, setNume] = useState("");
@@ -62,6 +61,7 @@ function Profile(user: any) {
   useEffect(() => {
     get_detalii_user();
   }, []);
+
 
   return (
     <div className="profile">
@@ -157,14 +157,11 @@ function Profile(user: any) {
             color = "warning">
               Update
           </Button>
-          
         </form>
-
       </div>
       
       <Link to="/" className = "buton_logout">
         <Button 
-          
           variant = "contained"
           color = "error"
           onClick={() => {
@@ -173,7 +170,6 @@ function Profile(user: any) {
                   Logout
         </Button>
       </Link>
-      
     </div>
   );
 }

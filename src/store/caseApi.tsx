@@ -2,6 +2,7 @@ import { createApi, fakeBaseQuery } from '@reduxjs/toolkit/query/react'
 import { getCases, getCases_placa_compat } from '../controllers/Case_Controller';
 import { DocumentData } from 'firebase/firestore';
 
+
 export const caseApi = createApi({
     reducerPath: "caseApi",
     baseQuery: fakeBaseQuery(),

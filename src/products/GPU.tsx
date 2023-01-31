@@ -1,5 +1,5 @@
 import { Typography, FormControl, Select, MenuItem, SelectChangeEvent, FormLabel, RadioGroup, FormControlLabel, Radio, Button, Fab } from '@mui/material';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { IGPU } from '../interfaces/IGPU';
 import GPUItem from './GPUItem';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';

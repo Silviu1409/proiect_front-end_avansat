@@ -73,7 +73,6 @@ function Register(){
 
     return(
         <div className = "login">
-            
             <label className="reg_title">REGISTER</label>
 
             <Box
@@ -171,7 +170,6 @@ function Register(){
                     }}>
                         Register
             </Button>
-            
         </div>
     );
 }
