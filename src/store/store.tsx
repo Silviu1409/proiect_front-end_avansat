@@ -1,5 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { setupListeners } from "@reduxjs/toolkit/query";
+import cartReducer from "./cartSlice";
 import { caseApi } from "./caseApi";
 import { CPUApi } from "./CPUApi";
 import { GPUApi } from "./GPUApi";
@@ -17,7 +18,8 @@ export const store = configureStore({
         [PSUApi.reducerPath]: PSUApi.reducer,
         [RAMApi.reducerPath]: RAMApi.reducer,
         [MBDApi.reducerPath]: MBDApi.reducer,
-        [SSDApi.reducerPath]: SSDApi.reducer
+        [SSDApi.reducerPath]: SSDApi.reducer,
+        cart: cartReducer
     },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(caseApi.middleware)
                                                                 .concat(CPUApi.middleware)

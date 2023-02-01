@@ -41,13 +41,13 @@ function NavBar(user: any) {
 
                 <li className="nav-item">
                   <NavLink className="nav-link" to="/products">
-                    Products
+                    Produse
                   </NavLink>
                 </li>
 
                 <li className="nav-item">
                   <NavLink className="nav-link" to="/shoppingcart">
-                    ShoppingCart
+                    Cos
                   </NavLink>
                 </li>
 

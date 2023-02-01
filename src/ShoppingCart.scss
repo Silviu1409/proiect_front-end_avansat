@@ -1,0 +1,112 @@
+.shoppingCart{
+    color: white;
+    font-family: "Varela Round", sans-serif;
+}
+
+.shoppingCart-header{
+    text-align: center;
+    margin-top: 10vh;
+    margin-bottom: 15vh;
+}
+
+.shoppingCart > .empty_cart{
+    margin-top: 5vh;
+    margin-left: 5vw;
+}
+
+.content{
+    display: flex;
+    flex-direction: column;
+    margin-left: 7.5vw;
+}
+
+.content > .shoppingCart-title{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 2.5vh;
+}
+
+.content > .shoppingCart-title > .product{
+    width: 50%;
+}
+
+.content > .shoppingCart-title > .price{
+    width: 10%;
+}
+
+.content > .shoppingCart-title > .quantity{
+    width: 10%;
+    margin-left: 1.5%;
+}
+
+.content > .shoppingCart-title > .total{
+    width: 17.5%;
+    margin-left: -1.5%;
+}
+
+.content > .item{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.content > .item > .product{
+    display: flex;
+    flex-direction: row;
+    column-gap: 2.5vw;
+    align-items: center;
+    width: 45%;
+}
+
+.content > .item > .product > img{
+    width: 125px;
+    height: 125px;
+}
+
+.content > .item > .price{
+    width: 10%;
+    margin-left: 5%;
+}
+
+.content > .item > .quantity{
+    width: 10%;
+    display: flex;
+    flex-direction: row;
+    column-gap: .5vw;
+}
+
+.content > .item > .total{
+    width: 10%;
+}
+
+.content > .item{
+    margin-top: 5vh;
+}
+
+.content > .summary{
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+    display: flex;
+    flex-direction: row;
+}
+
+.content > .summary > :first-child{
+    width: 65%;
+}
+
+.content > .summary > :first-child > .clear-items{
+    color: white;
+    border-radius: 10px;
+    border-color: white;
+    border-width: 1px;
+    border-style: solid;
+    text-transform: unset;
+}
+
+.content > .summary > .checkout{
+    width: 25%;
+}
+
+.content > .summary > .checkout{
+    margin-top: -2.5vh;
+}

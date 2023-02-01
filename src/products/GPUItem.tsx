@@ -1,10 +1,18 @@
 import { IGPU } from "../interfaces/IGPU";
 import { Typography, Button } from '@mui/material';
+import { useDispatch } from "react-redux";
+import { addToCart } from "../store/cartSlice";
 
 import "./GPUStil.scss";
 
 
 const GPUItem = (item: IGPU)  => {
+    const dispatch = useDispatch();
+
+    const handleAddToCart = (item: IGPU) => {
+        dispatch(addToCart(item));
+    }
+    
     return (
         <div key={item.id} className="item">
             <img src={item.url_poza} alt="gpu img"/>
@@ -36,7 +44,7 @@ const GPUItem = (item: IGPU)  => {
                     {item.pret.toString()} lei
                 </Typography>
 
-                <Button className='buton_add_cos' onClick={() => {}}>Adauga in cos</Button>
+                <Button className='buton_add_cos' onClick={() => handleAddToCart(item)}>Adauga in cos</Button>
             </div>
         </div>
     )

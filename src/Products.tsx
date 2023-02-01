@@ -10,7 +10,7 @@ function Products() {
     <div className="products">
       <header className="products-header">
         <Typography variant="h3" component="h3">
-            Products page
+            Categorii de produse
         </Typography>
       </header>
 
