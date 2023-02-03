@@ -5,6 +5,7 @@ import RAMItem from './RAMItem';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { NavLink } from 'react-router-dom';
 import { useGetAllRAMsQuery, useGetRAMs_filterMutation } from '../store/RAMApi';
+import { useSelector } from 'react-redux';
 
 import "./Stil.scss";
 import "./RAMStil.scss";
@@ -17,6 +18,7 @@ function RAM() {
     const [sort, setSort] = useState("");
     const [filtrareCapacitate, setFiltrareCapacitate] = useState("");
     const [filtrareTip, setFiltrareTip] = useState("");
+    const noItemsCart = useSelector((state: any) => state.cart.cartNoItems < 10 ? state.cart.cartNoItems : "9+");
 
 
     const sorting = (sortare: string) => {
@@ -175,6 +177,7 @@ function RAM() {
             <NavLink className="shoppingcart" to="/shoppingcart">
                 <Fab color="secondary" aria-label="add">
                     <ShoppingCartIcon />
+                    <p className='noOfItemsinCart'>{noItemsCart}</p>
                 </Fab>
             </NavLink>
         </div>

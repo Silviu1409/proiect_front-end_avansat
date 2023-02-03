@@ -1,6 +1,5 @@
-import { Typography, Fab, Box } from '@mui/material';
+import { Typography, Box } from '@mui/material';
 import { NavLink } from 'react-router-dom';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 import './Products.scss';
 
@@ -89,13 +88,6 @@ function Products() {
             </NavLink>
           </Box>
         </div>
-
-        <NavLink className="shoppingcart" to="/shoppingcart">
-          <Fab color="secondary" aria-label="add">
-            <ShoppingCartIcon />
-          </Fab>
-        </NavLink>
-        
       </div>
     </div>
   );

@@ -5,6 +5,7 @@ import CaseItem from './CaseItem';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { NavLink } from 'react-router-dom';
 import { useGetAllCasesQuery, useGetCases_placa_compatMutation } from '../store/caseApi';
+import { useSelector } from 'react-redux';
 
 import "./Stil.scss";
 import "./CaseStil.scss";
@@ -16,6 +17,7 @@ function Case() {
     const [carcase, setCarcase] = useState(Array<ICase>);
     const [sort, setSort] = useState("");
     const [filtrare, setFiltrare] = useState("");
+    const noItemsCart = useSelector((state: any) => state.cart.cartNoItems < 10 ? state.cart.cartNoItems : "9+");
 
 
     const sorting = (sortare: string) => {
@@ -143,6 +145,7 @@ function Case() {
             <NavLink className="shoppingcart" to="/shoppingcart">
                 <Fab color="secondary" aria-label="add">
                     <ShoppingCartIcon />
+                    <p className='noOfItemsinCart'>{noItemsCart}</p>
                 </Fab>
             </NavLink>
         </div>

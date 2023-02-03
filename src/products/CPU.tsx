@@ -5,6 +5,7 @@ import CPUItem from './CPUItem';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { NavLink } from 'react-router-dom';
 import { useGetAllCPUsQuery, useGetCPUs_filterMutation } from '../store/CPUApi';
+import { useSelector } from 'react-redux';
 
 import "./Stil.scss";
 import "./CPUStil.scss";
@@ -18,6 +19,7 @@ function CPU() {
     const [filtrareProd, setFiltrareProd] = useState("");
     const [filtrareNuclee, setFiltrareNuclee] = useState(0);
     const [filtrareSocket, setFiltrareSocket] = useState("");
+    const noItemsCart = useSelector((state: any) => state.cart.cartNoItems < 10 ? state.cart.cartNoItems : "9+");
 
 
     const sorting = (sortare: string) => {
@@ -213,6 +215,7 @@ function CPU() {
             <NavLink className="shoppingcart" to="/shoppingcart">
                 <Fab color="secondary" aria-label="add">
                     <ShoppingCartIcon />
+                    <p className='noOfItemsinCart'>{noItemsCart}</p>
                 </Fab>
             </NavLink>
         </div>

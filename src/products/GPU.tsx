@@ -5,6 +5,7 @@ import GPUItem from './GPUItem';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { NavLink } from 'react-router-dom';
 import { useGetAllGPUsQuery, useGetGPUs_filterMutation } from '../store/GPUApi';
+import { useSelector } from 'react-redux';
 
 import "./Stil.scss";
 import "./GPUStil.scss";
@@ -17,6 +18,7 @@ function GPU() {
     const [sort, setSort] = useState("");
     const [filtrareChipset, setFiltrareChipset] = useState("");
     const [filtrareMemorie, setFiltrareMemorie] = useState("");
+    const noItemsCart = useSelector((state: any) => state.cart.cartNoItems < 10 ? state.cart.cartNoItems : "9+");
 
 
     const sorting = (sortare: string) => {
@@ -176,6 +178,7 @@ function GPU() {
             <NavLink className="shoppingcart" to="/shoppingcart">
                 <Fab color="secondary" aria-label="add">
                     <ShoppingCartIcon />
+                    <p className='noOfItemsinCart'>{noItemsCart}</p>
                 </Fab>
             </NavLink>
         </div>

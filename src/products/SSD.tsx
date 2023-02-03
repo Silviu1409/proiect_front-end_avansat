@@ -5,6 +5,7 @@ import SSDItem from './SSDItem';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { NavLink } from 'react-router-dom';
 import { useGetAllSSDsQuery, useGetSSDs_filterMutation } from '../store/SSDApi';
+import { useSelector } from 'react-redux';
 
 import "./Stil.scss";
 import "./SSDStil.scss";
@@ -16,6 +17,7 @@ function SSD() {
     const [SSDs, setSSDs] = useState(Array<ISSD>);
     const [sort, setSort] = useState("");
     const [filtrareFormFactor, setFiltrareFormFactor] = useState("");
+    const noItemsCart = useSelector((state: any) => state.cart.cartNoItems < 10 ? state.cart.cartNoItems : "9+");
 
 
     const sorting = (sortare: string) => {
@@ -150,6 +152,7 @@ function SSD() {
             <NavLink className="shoppingcart" to="/shoppingcart">
                 <Fab color="secondary" aria-label="add">
                     <ShoppingCartIcon />
+                    <p className='noOfItemsinCart'>{noItemsCart}</p>
                 </Fab>
             </NavLink>
         </div>

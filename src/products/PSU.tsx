@@ -5,6 +5,7 @@ import PSUItem from './PSUItem';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { NavLink } from 'react-router-dom';
 import { useGetAllPSUsQuery, useGetPSUs_filterMutation } from '../store/PSUApi';
+import { useSelector } from 'react-redux';
 
 import "./Stil.scss";
 import "./PSUStil.scss";
@@ -17,6 +18,7 @@ function PSU() {
     const [sort, setSort] = useState("");
     const [filtrareCert, setFiltrareCert] = useState("");
     const [filtrareModulara, setFiltrareModulara] = useState("");
+    const noItemsCart = useSelector((state: any) => state.cart.cartNoItems < 10 ? state.cart.cartNoItems : "9+");
 
 
     const sorting = (sortare: string) => {
@@ -176,6 +178,7 @@ function PSU() {
             <NavLink className="shoppingcart" to="/shoppingcart">
                 <Fab color="secondary" aria-label="add">
                     <ShoppingCartIcon />
+                    <p className='noOfItemsinCart'>{noItemsCart}</p>
                 </Fab>
             </NavLink>
         </div>
