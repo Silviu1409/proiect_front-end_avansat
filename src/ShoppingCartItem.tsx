@@ -37,17 +37,19 @@ const ShoppingCartItem = (item: any)  => {
 
             <div className="quantity">
                 <Tooltip title="Scade">
-                    <IconButton
-                        disabled = {item.cartQuantity === 1}
-                        onClick = {() => handleDecItem(item)}
-                        >
-                        <RemoveIcon
-                            sx={{
-                                color: 'white',
-                                fontSize: "20px"
-                            }}
-                            />
-                    </IconButton>
+                    <span>
+                        <IconButton
+                            disabled = {item.cartQuantity === 1}
+                            onClick = {() => handleDecItem(item)}
+                            >
+                            <RemoveIcon
+                                sx={{
+                                    color: 'white',
+                                    fontSize: "20px"
+                                }}
+                                />
+                        </IconButton>
+                    </span>
                 </Tooltip>
 
                 <Typography variant="h5" component="h5">

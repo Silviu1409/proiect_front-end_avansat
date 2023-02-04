@@ -1,13 +1,14 @@
 import { createApi, fakeBaseQuery } from '@reduxjs/toolkit/query/react'
 import { getCPUs, getCPUs_filter } from '../controllers/CPU_Controller';
 import { DocumentData } from 'firebase/firestore';
+import { ICPU } from '../interfaces/ICPU';
 
 
 export const CPUApi = createApi({
     reducerPath: "CPUApi",
     baseQuery: fakeBaseQuery(),
     endpoints: (builder) => ({
-        getAllCPUs:  builder.query<[], void>({
+        getAllCPUs:  builder.query<Array<ICPU>, void>({
             queryFn: async() => {
                 try{
                     let result: [] = [];
@@ -23,7 +24,7 @@ export const CPUApi = createApi({
                 }
             }
         }),
-        getCPUs_filter:  builder.mutation<[], {field: string, val: any}>({
+        getCPUs_filter:  builder.mutation<Array<ICPU>, {field: string, val: any}>({
             queryFn: async({field, val}) => {
                 try{
                     let result: [] = [];

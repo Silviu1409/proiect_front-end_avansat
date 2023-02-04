@@ -4,7 +4,11 @@ import { signOut } from 'firebase/auth';
 import { updateDoc } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { app, auth } from './dbconfig';
+import { useGet_ordersQuery } from './store/cartApi';
+import ProfileOrderItem from './ProfileOrderItem';
+
 
 import './Home.scss';
 
@@ -16,7 +20,11 @@ function Profile(user: any) {
   const [prenume, setPrenume] = useState("");
   const [email, setEmail] = useState("");
   const [nr_tel, setNr_tel] = useState("");
-  const [comenzi, setComenzi] = useState([]);
+
+  const {data, isLoading} = useGet_ordersQuery(user.user.uid);
+  const [orders, setOrders] = useState([]);
+
+  const ver_tel = new RegExp('^(07[2-8]{1}[0-9]{7})$');
 
   const id = user.user.uid;
 
@@ -32,26 +40,29 @@ function Profile(user: any) {
           setPrenume(res.prenume);
           setEmail(res.email);
           setNr_tel(res.nr_tel);
-          setComenzi(res.comenzi);
         }
     })
     .catch((e) => console.log(e));
   }
 
   const handleSubmit = (event: any) => {
+    if(ver_tel.test(nr_tel)){
+      const ref = doc(db, "users", id);
 
-    const ref = doc(db, "users", id);
-
-    updateDoc(ref, {
-      email: email,
-      nume: nume,
-      prenume: prenume,
-      nr_tel: nr_tel,
-      comenzi: comenzi
-    });     
-    
-    event.preventDefault();
-    alert(`S-au actualizat detaliile contului`);
+      updateDoc(ref, {
+        email: email,
+        nume: nume,
+        prenume: prenume,
+        nr_tel: nr_tel,
+      });     
+      
+      event.preventDefault();
+      alert(`S-au actualizat detaliile contului`);
+    } else {
+      event.preventDefault();
+      
+      toast.error(`Format numar telefon gresit!`, {position: "bottom-left"});
+    }
   }
 
   const logout = () => {
@@ -60,7 +71,15 @@ function Profile(user: any) {
 
   useEffect(() => {
     get_detalii_user();
-  }, []);
+    if(isLoading){
+      return;
+    }
+    else if(data){
+      setOrders([...data]);
+    } else {
+      setOrders([]);
+  }
+}, [isLoading, data]);
 
 
   return (
@@ -145,6 +164,7 @@ function Profile(user: any) {
                       borderStyle: "solid",
                       input: {color: "white"}
                     }}
+                    inputProps = {{ maxLength: 10 }}
                 />
             </Box>
 
@@ -158,6 +178,23 @@ function Profile(user: any) {
               Update
           </Button>
         </form>
+
+        { orders.length !== 0
+            ?
+              <div className='order-history'>
+                <Typography variant="h5" component="h5">
+                  Comenzi plasate:
+                </Typography>
+
+                { orders.map((item: any) => ProfileOrderItem(item)) }
+              </div>
+            :
+              <div className='order-history'>
+                <Typography variant="h5" component="h5">
+                  Nu ai plasat nicio comanda!
+                </Typography>
+              </div>
+        }
       </div>
       
       <Link to="/" className = "buton_logout">

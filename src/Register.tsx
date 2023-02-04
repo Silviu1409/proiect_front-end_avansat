@@ -46,7 +46,6 @@ function Register(){
                     nume: nume,
                     prenume: prenume,
                     nr_tel: "",
-                    comenzi: []
                 });
 
                 setEmail('');

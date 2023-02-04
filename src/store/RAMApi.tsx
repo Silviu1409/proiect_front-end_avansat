@@ -1,13 +1,14 @@
 import { createApi, fakeBaseQuery } from '@reduxjs/toolkit/query/react'
 import { getRAMs, getRAMs_filter } from '../controllers/RAM_Controller';
 import { DocumentData } from 'firebase/firestore';
+import { IRAM } from '../interfaces/IRAM';
 
 
 export const RAMApi = createApi({
     reducerPath: "RAMApi",
     baseQuery: fakeBaseQuery(),
     endpoints: (builder) => ({
-        getAllRAMs:  builder.query<[], void>({
+        getAllRAMs:  builder.query<Array<IRAM>, void>({
             queryFn: async() => {
                 try{
                     let result: [] = [];
@@ -23,7 +24,7 @@ export const RAMApi = createApi({
                 }
             }
         }),
-        getRAMs_filter:  builder.mutation<[], {field: string, val: any}>({
+        getRAMs_filter:  builder.mutation<Array<IRAM>, {field: string, val: any}>({
             queryFn: async({field, val}) => {
                 try{
                     let result: [] = [];

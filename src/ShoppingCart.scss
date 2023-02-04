@@ -92,9 +92,21 @@
 
 .content > .summary > :first-child{
     width: 65%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 3vh;
 }
 
-.content > .summary > :first-child > .clear-items{
+.content > .summary > :first-child .clear-items{
+    color: white;
+    border-radius: 10px;
+    border-color: white;
+    border-width: 1px;
+    border-style: solid;
+    text-transform: unset;
+}
+
+.content > .summary > .checkout > :nth-child(2) > .place-order{
     color: white;
     border-radius: 10px;
     border-color: white;
@@ -105,8 +117,9 @@
 
 .content > .summary > .checkout{
     width: 25%;
-}
-
-.content > .summary > .checkout{
     margin-top: -2.5vh;
+    display: flex;
+    flex-direction: column;
+    row-gap: 5vh;
+    align-items: center;
 }

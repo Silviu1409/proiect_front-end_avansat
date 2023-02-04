@@ -59,9 +59,10 @@ function CPU() {
 
                 const res = await getCPUs_filter({field: field, val: Number(event.target.value)}).unwrap();
 
-                if(res){
+                if(res)
                     setCPUs([...res]);
-                }
+                else
+                    setCPUs([]);
 
                 setSort("");
 
@@ -80,9 +81,10 @@ function CPU() {
 
         const res = await getCPUs_filter({field: field, val: event.target.value}).unwrap();
 
-        if(res){
+        if(res)
             setCPUs([...res]);
-        }
+        else
+            setCPUs([]);
 
         setSort("");
     }
@@ -94,6 +96,8 @@ function CPU() {
 
         if(data)
             setCPUs([...data]);
+        else
+            setCPUs([]);
     }
 
     useEffect(() =>{

@@ -1,13 +1,14 @@
 import { createApi, fakeBaseQuery } from '@reduxjs/toolkit/query/react'
 import { getCases, getCases_placa_compat } from '../controllers/Case_Controller';
 import { DocumentData } from 'firebase/firestore';
+import { ICase } from '../interfaces/ICase';
 
 
 export const caseApi = createApi({
     reducerPath: "caseApi",
     baseQuery: fakeBaseQuery(),
     endpoints: (builder) => ({
-        getAllCases:  builder.query<[], void>({
+        getAllCases:  builder.query<Array<ICase>, void>({
             queryFn: async() => {
                 try{
                     let result: [] = [];
@@ -23,7 +24,7 @@ export const caseApi = createApi({
                 }
             }
         }),
-        getCases_placa_compat:  builder.mutation<[], string>({
+        getCases_placa_compat:  builder.mutation<Array<ICase>, string>({
             queryFn: async(placa_compat) => {
                 try{
                     let result: [] = [];

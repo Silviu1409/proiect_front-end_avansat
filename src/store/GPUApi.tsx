@@ -1,13 +1,14 @@
 import { createApi, fakeBaseQuery } from '@reduxjs/toolkit/query/react'
 import { getGPUs, getGPUs_filter } from '../controllers/GPU_Controller';
 import { DocumentData } from 'firebase/firestore';
+import { IGPU } from '../interfaces/IGPU';
 
 
 export const GPUApi = createApi({
     reducerPath: "GPUApi",
     baseQuery: fakeBaseQuery(),
     endpoints: (builder) => ({
-        getAllGPUs:  builder.query<[], void>({
+        getAllGPUs:  builder.query<Array<IGPU>, void>({
             queryFn: async() => {
                 try{
                     let result: [] = [];
@@ -23,7 +24,7 @@ export const GPUApi = createApi({
                 }
             }
         }),
-        getGPUs_filter:  builder.mutation<[], {field: string, val: any}>({
+        getGPUs_filter:  builder.mutation<Array<IGPU>, {field: string, val: any}>({
             queryFn: async({field, val}) => {
                 try{
                     let result: [] = [];

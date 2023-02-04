@@ -92,9 +92,20 @@ const cartSlice = createSlice({
             localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
             localStorage.setItem("cartTotalAmount", JSON.stringify(state.cartTotalAmount));
             localStorage.setItem("cartNoItems", JSON.stringify(state.cartNoItems));
+        },
+        resetCart(state: any){
+            state.cartItems = [];
+            state.cartTotalAmount = 0;
+            state.cartNoItems = 0;
+            
+            toast.success(`Comanda a fost plasata!`, {position: "bottom-left"});
+
+            localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
+            localStorage.setItem("cartTotalAmount", JSON.stringify(state.cartTotalAmount));
+            localStorage.setItem("cartNoItems", JSON.stringify(state.cartNoItems));
         }
     }
 });
 
-export const { addToCart, removeItem, decItems, incItems, clearCart } = cartSlice.actions;
+export const { addToCart, removeItem, decItems, incItems, clearCart, resetCart } = cartSlice.actions;
 export default cartSlice.reducer;
