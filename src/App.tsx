@@ -19,8 +19,8 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "./dbconfig";
 import { useEffect } from "react";
 
-import { ProtectedAuthRoute } from "./ProtectedAuthRoute";
-import { ProtectedProfileRoute } from "./ProtectedProfileRoute";
+import { ProtectedAuthRoute } from "./ProtectedRoutes";
+import { ProtectedProfileRoute } from "./ProtectedRoutes";
 import { ToastContainer } from "react-toastify";
 
 import "react-toastify/dist/ReactToastify.css";

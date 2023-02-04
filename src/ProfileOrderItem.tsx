@@ -18,7 +18,7 @@ const ProfileOrderItem = (item: any)  => {
             </div>
 
             <Typography variant="h6" component="h6">
-                Total: {item.total}
+                Total: {item.total} lei
             </Typography>
 
             <Typography variant="h6" component="h6">

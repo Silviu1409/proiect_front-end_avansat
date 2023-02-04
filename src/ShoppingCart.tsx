@@ -2,11 +2,11 @@ import { Box, Button, TextField, Typography } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import ShoppingCartItem from './ShoppingCartItem';
 import { clearCart, resetCart } from './store/cartSlice';
-import { usePost_cartMutation } from './store/cartApi';
+import { useGet_ordersQuery, usePost_cartMutation } from './store/cartApi';
 import { useState } from 'react';
+import { toast } from 'react-toastify';
 
 import './ShoppingCart.scss'
-import { toast } from 'react-toastify';
 
 
 function ShoppingCart(user: any) {
@@ -14,6 +14,7 @@ function ShoppingCart(user: any) {
   const [post_cart] = usePost_cartMutation();
   const cart = useSelector((state: any) => state.cart);
   const dispatch = useDispatch();
+  const {refetch} = useGet_ordersQuery(user.user.uid);
 
   const handleClearCart = () => {
     dispatch(clearCart());
@@ -31,7 +32,8 @@ function ShoppingCart(user: any) {
       }
 
       await post_cart(cart_data)
-            .then(() => dispatch(resetCart()));
+            .then(() => dispatch(resetCart()))
+            .then(() => refetch());
     } else {
       if (nume !== ""){
         const cart_data = {

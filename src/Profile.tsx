@@ -9,7 +9,6 @@ import { app, auth } from './dbconfig';
 import { useGet_ordersQuery } from './store/cartApi';
 import ProfileOrderItem from './ProfileOrderItem';
 
-
 import './Home.scss';
 
 
@@ -71,6 +70,7 @@ function Profile(user: any) {
 
   useEffect(() => {
     get_detalii_user();
+
     if(isLoading){
       return;
     }
