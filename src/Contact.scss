@@ -17,19 +17,22 @@
     font-family: "Varela Round", sans-serif;
 }
 
-.content{
+.content-contact{
     display: flex;
     flex-direction: row;
-    padding-top: 7.5vh;
+    margin-top: 7.5vh;
+    margin-left: 2.5vw;
 }
 
 .text{
     width: 45%;
-    padding-right: 5vw;
+    margin-right: 5vw;
+    margin-top: 1vh;
 }
 
 .harta{
-    margin-top: 4.5vh;
+    margin-top: 4vh;
+    margin-left: 2.5vw;
     width: 40vw;
     height: 50vh;
     border: 0;

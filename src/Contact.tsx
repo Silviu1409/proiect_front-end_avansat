@@ -14,7 +14,7 @@ function Contact() {
       </header>
 
       <div>
-        <div className="content">
+        <div className="content-contact">
           <div className="text">
             <div className='program_lucru'>
               <Typography variant="h5" component="h5">

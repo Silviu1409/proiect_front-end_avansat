@@ -1,13 +1,13 @@
-import { doc, getDoc, getFirestore } from '@firebase/firestore';
-import { Box, Button, TextField, Typography } from '@mui/material';
+import { doc, getDoc, getFirestore, updateDoc } from 'firebase/firestore';
+import { Box, Button, InputAdornment, TextField, Typography } from '@mui/material';
 import { signOut } from 'firebase/auth';
-import { updateDoc } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { app, auth } from './dbconfig';
 import { useGet_ordersQuery } from './store/cartApi';
 import ProfileOrderItem from './ProfileOrderItem';
+import EditIcon from '@mui/icons-material/Edit';
 
 import './Home.scss';
 
@@ -79,6 +79,7 @@ function Profile(user: any) {
     } else {
       setOrders([]);
   }
+  // eslint-disable-next-line
 }, [isLoading, data]);
 
 
@@ -118,6 +119,11 @@ function Profile(user: any) {
                       borderStyle: "solid",
                       input: {color: "white"},
                     }}
+                    InputProps = {{ endAdornment: (
+                                      <InputAdornment position="end">
+                                        <EditIcon sx={{ color: "white" }}/>
+                                      </InputAdornment> ) 
+                    }}
                 />
             </Box>
 
@@ -140,6 +146,11 @@ function Profile(user: any) {
                       borderColor: "white",
                       borderStyle: "solid",
                       input: {color: "white"}
+                    }}
+                    InputProps = {{ endAdornment: (
+                                      <InputAdornment position="end">
+                                        <EditIcon sx={{ color: "white" }}/>
+                                      </InputAdornment> ) 
                     }}
                 />
             </Box>
@@ -165,6 +176,11 @@ function Profile(user: any) {
                       input: {color: "white"}
                     }}
                     inputProps = {{ maxLength: 10 }}
+                    InputProps = {{ endAdornment: (
+                                      <InputAdornment position="end">
+                                        <EditIcon sx={{ color: "white" }}/>
+                                      </InputAdornment> ) 
+                    }}
                 />
             </Box>
 
