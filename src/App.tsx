@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Navigate, Route, Routes } from "react-router-dom";
 
 import Home from './Home';
 import NavBar from './NavBar';
@@ -80,6 +80,9 @@ function App(){
                 <Route element={<ProtectedProfileRoute user={user} />}>
                     <Route element={<Profile user={user} />} path="/profile"/>
                 </Route>
+
+                {/* Ruta default */}
+                <Route path="*" element={<Navigate to="/" />} />
             </Routes>
         </Router>
     );
