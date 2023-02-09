@@ -14,7 +14,7 @@ function ShoppingCart(user: any) {
   const [post_cart] = usePost_cartMutation();
   const cart = useSelector((state: any) => state.cart);
   const dispatch = useDispatch();
-  const {refetch} = useGet_ordersQuery(user.user.uid);
+  const {refetch} = useGet_ordersQuery(user?.user?.uid);
 
   const handleClearCart = () => {
     dispatch(clearCart());
