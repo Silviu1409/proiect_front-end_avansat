@@ -1,5 +1,7 @@
 ## Proiect pentru cursul de Front-End Avansat
 
+### Link catre demo-ul proiectului: https://youtu.be/RFYJBeoktto
+
 ### &emsp; In cadrul acestui proiect, am ales sa fac un site web, in care sa vand piese pentru PC, din mai multe categorii. Drept inspiratie, am folosit platforma celor de la www.forit.ro (folosind sigla, datele de contact si o parte din descriere). Produsele sunt impartite in 7 categorii (carcase, procesoare, placi video, placi de baza, surse, memorii RAM, SSD-uri). Fiecare categorie de produse are cate o pagina dedicata, unde user-ul poate filtra produsele in functie de anumite criterii precum: producator, tip memorie(DDR4/DDR5 - la memoriile RAM), soclu procesor, capacitate memorie etc. De asemenea, produsele pot fi sortate in functie de pret (crescator/descrescator). Un user poate comanda produse cu ridicare din magazin (detalii in pagina de contact), fie ca este logat pe platforma sau nu (daca nu este logat, nu poate vedea istoricul comenzilor plasate si trebuie sa furnizeze si numele complet).
 
 #### Rutele folosite in cadrul proiectului sunt:
